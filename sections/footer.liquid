@@ -1,0 +1,207 @@
+<footer class="bg-white py-12">
+  <div class="wrapper">
+    <ul class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'contact' %}
+          <li>
+            {% render 'logo-vertical', class: 'w-[78px] h-[78px] md:w-[93px] md:h-[93px] lg:w-[120px] lg:h-[120px]' %}
+            <h3 class="mt-4 font-bold">{{ block.settings.title | escape }}</h3>
+            <div class="my-4">
+              {% render 'social-list', bg_color: '#fff' %}
+            </div>
+          </li>
+          {% when 'menu' %}
+          <li>
+            {% assign menu = linklists[block.settings.menu_uno] %}
+            <div class="mb-8">
+              <h2 class="text-[18px] font-bold uppercase mb-2">{{ menu.title | escape }}</h2>
+              <ul>
+                {% for link in menu.links %}
+                  <li>
+                    <a href="{{ link.url }}" class="block leading-[1.5] hover:underline hover:underline-offset-2">
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% assign menu_dos = linklists[block.settings.menu_dos] %}
+            <div>
+              <h2 class="text-[18px] font-bold uppercase mb-2">{{ menu_dos.title | escape }}</h2>
+              <ul>
+                {% for link in menu_dos.links %}
+                  <li>
+                    <a
+                      href="{{ link.url }}"
+                      class="block leading-[1.5] hover:underline hover:underline-offset-2"
+                      target="_blank">
+                      {{ link.title | escape }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+          {% when 'location' %}
+          <li>
+            <div class="mb-8">
+              {% assign locations = linklists[block.settings.menu_uno] %}
+              <h3 class="text-[18px] font-bold uppercase mb-2">{{ locations.title | escape }}</h2>
+              <ul>
+                {% for link in locations.links %}
+                  <li>
+                    <a
+                      href="{{ link.url }}"
+                      class="block leading-[2] hover:underline hover:underline-offset-2 uppercase"
+                      target="_blank">
+                      {{ link.title | escape }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div>
+              {% assign numbers = linklists[block.settings.menu_dos] %}
+              <h3 class="text-[18px] font-bold uppercase mb-2">{{ numbers.title | escape }}</h2>
+              <ul>
+                {% for link in numbers.links %}
+                  <li class="mb-2">
+                    <a
+                      href="{{ link.url }}"
+                      class="btn-rounded btn-secondary"
+                      target="_blank">
+                      {{ link.title | escape }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+          {% when 'payments' %}
+          <li>
+            <h3 class="text-[18px] font-bold uppercase mb-2">{{ block.settings.title | escape }}</h2>
+            <ul>
+              {% if block.settings.pay_title_one != blank and block.settings.pay_image_one != blank %}
+                <li class="mb-1">
+                  <img
+                  src="{{ block.settings.pay_image_one | img_url: '150' }}"
+                  alt="{{ block.settings.pay_title_one }}"
+                  width="150"
+                  height="{{ 150 | divided_by: settings.pay_image_one.aspect_ratio | ceil }}"
+                  loading="lazy"
+                  >
+                </li> 
+              {%  elsif block.settings.pay_title_one != blank and block.settings.pay_image_one == blank %}
+                <li class="mb-1">
+                  {{ block.settings.pay_title_one | escape }}
+                </li>
+              {% endif %}
+            </ul>
+
+          </li>
+        {% endcase %}
+
+      {% endfor %}
+    </ul>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "max_blocks": 5,
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "type": "contact",
+        "name": "Links Contacto",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Título para bloque de contacto",
+            "default": "Contacto"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link para contacto"
+          }, {
+            "type": "text",
+            "id": "text_link",
+            "label": "Texto para el link",
+            "default": "¡Escríbenos aquí!"
+          }
+        ]
+      }, {
+        "type": "menu",
+        "name": "Links del footer",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "menu_uno",
+            "label": "Selecciona un menu para el footer"
+          }, {
+            "type": "link_list",
+            "id": "menu_dos",
+            "label": "Selecciona el segundo menu para el footer"
+          }
+        ]
+      }, {
+        "type": "payments",
+        "name": "Metodos de pago",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "titulo del menú",
+            "default": "Métodos de pago"
+          },
+          {
+            "type": "text",
+            "id": "pay_title_one",
+            "label": "Método de pago uno"
+          },
+          {
+            "type": "image_picker",
+            "id": "pay_image_one",
+            "label": "Imagen de método de pago uno"
+          },
+          {
+            "type": "text",
+            "id": "pay_title_two",
+            "label": "Método de pago dos"
+          },
+          {
+            "type": "image_picker",
+            "id": "pay_image_two",
+            "label": "Imagen de método de pago dos"
+          }, {
+            "type": "text",
+            "id": "pay_title_three",
+            "label": "Método de pago tres"
+          }, {
+            "type": "image_picker",
+            "id": "pay_image_three",
+            "label": "Imagen de método de pago tres"
+          }
+        ]
+      }, {
+        "type": "location",
+        "name": "Ubicación",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "menu_uno",
+            "label": "Selecciona el menu de direcciones"
+          }, {
+            "type": "link_list",
+            "id": "menu_dos",
+            "label": "Selecciona el menú de los números"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,43 @@
+<div class="modal-search fixed z-[9999] w-[100vw] h-full top-0 left-0 flex flex-col justify-start bg-[rgba(10,10,10,.5)]" x-ref="search_modal">
+  <div class="block">
+    <div class="fixed top-0 left-0 right-0 bottom-0" @click.prevent="$dispatch('toggle-search-modal')"></div>
+    <div class="search-inner bg-white w-full px-4 py-6 flex items-center">
+      <div class="flex mx-auto items-center justify-between gap-x-2">
+        <predictive-search class="w-full">
+          <form action="{{ routes.search_url }}" method="get" role="search" class="relative w-full">
+            <div class="group w-[100%] border-[2px] text-[#13203A] border-[#13203A] flex items-center focus-within:border-[#FF4100]">
+              <input
+                id="Search"
+                type="search"
+                name="q"
+                value="{{ search.terms | escape }}"
+                role="combobox"
+                aria-expanded="false"
+                aria-owns="predictive-search-results-list"
+                aria-controls="predictive-search-results-list"
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
+                autocorrect="off"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false" 
+                class="bg-transparent w-[95%] px-2 py-1 placeholder:text-[15px] placeholder:text-[#13203A] outline-none text-sm"
+                x-ref="search_input"
+                placeholder="{{ section.settings.placeholder_text | escape }}"
+              >
+              <input name="options[prefix]" type="hidden" value="last">
+              <input type="hidden" name="type" value="product">
+              <button type="submit" class="pr-2">
+                {% render 'icon-search', class: 'w-[22.19px] h-[22.19px]' %}
+              </button>
+            </div>
+            <div id="predictive-search" class="absolute top-full left-0 w-full bg-white text-[#13203A]" style="box-shadow: 0 1px 3px rgb(0, 0, 0, .35);" tabindex="-1" x-ref="predicitive_search"></div>
+          </form>
+        </predictive-search>
+        <button @click="$dispatch('toggle-search-modal')">
+          {% render 'icon-close-drawer' %}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>  

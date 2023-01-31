@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {% if settings.favicon != blank %}
+      <!--FAVICON-->
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {% endif %}
+
+    <!--TITLE-->    
+    <title>
+      {{ page_title }}
+      {% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
+      {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
+      {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    <!--DESCRIPTION-->
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    <!--METATAGS-->
+    {% render 'meta-tags' %}
+
+    <!--LOAD JAVASCRIPT -->
+    <script src="{{ 'app.js' | asset_url }}" defer></script>
+
+    <!--LOAD SHOPIFY HOOK -->
+    {{ content_for_header }}
+
+    <!--LOAD MAIN CSS -->
+    {{ 'main.css' | asset_url | stylesheet_tag }}
+
+    <!--FONTS-->
+    <style>
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-Black.ttf' | asset_url }}) format('truetype');
+        font-weight: 900;
+        font-style: normal;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-BlackItalic.ttf' | asset_url }}) format('truetype');
+        font-weight: 900;
+        font-style: italic;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-ExtraBold.ttf' | asset_url }}) format('truetype');
+        font-weight: 800;
+        font-style: normal;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-ExtraBoldItalic.ttf' | asset_url }}) format('truetype');
+        font-weight: 800;
+        font-style: italic;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-Bold.ttf' | asset_url }}) format('truetype');
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-BoldItalic.ttf' | asset_url }}) format('truetype');
+        font-weight: 700;
+        font-style: italic;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-SemiBold.ttf' | asset_url }}) format('truetype');
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-SemiBoldItalic.ttf' | asset_url }}) format('truetype');
+        font-weight: 600;
+        font-style: italic;
+      }
+
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-Medium.ttf' | asset_url }}) format('truetype');
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-MediumItalic.ttf' | asset_url }}) format('truetype');
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-Regular.ttf' | asset_url }}) format('truetype');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-Thin.ttf' | asset_url }}) format('truetype');
+        font-weight: 300;
+        font-style: normal;
+      }
+
+      @font-face{
+        font-display: swap;
+        font-family: 'Poppins';
+        src: url({{ 'Poppins-ThinItalic.ttf' | asset_url }}) format('truetype');
+        font-weight: 300;
+        font-style: italic;
+      }
+
+
+    </style>
+    <!--DESIGN-MODE-->
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+</head>
+<body class="font-poppins text-[#13203A] bg-black">
+  {% section "announcement-bar" %}
+  {% section "header" %}  
+  <main class="min-h-[90vh]">
+    {{ content_for_layout }}
+  </main>
+  {% section "footer" %} 
+</body>
+</html>

@@ -1,0 +1,19 @@
+.btn-rounded{
+  @apply block py-2 px-8 uppercase rounded-[32px] italic text-[15px] font-bold transition-colors duration-200 ease-in-out w-max;
+}
+
+.btn-primary{
+  @apply text-white bg-[#FF4100] border border-[#FF4100] hover:bg-white hover:text-[#FF4100];
+}
+
+.btn-secondary{
+  @apply text-white bg-[#00C13E] border border-[#00C13E] hover:bg-white hover:text-[#00C13E];
+}
+
+.btn-blue{
+  @apply text-white bg-[#13203A] border border-[#13203A] hover:bg-white hover:text-[#13203A];
+}
+
+.btn{
+  @apply block py-2 px-8 uppercase italic text-[15px] font-black transition-colors duration-200 ease-in-out w-full;
+}

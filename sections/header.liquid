@@ -1,0 +1,262 @@
+<header class="{% unless template == 'index' %}header{% else %}header-transparent{% endunless %}" x-data="{
+  atTop: false
+}"
+{% unless template == 'index'%}
+:class="{ 'header' : !atTop,  'header-fixed' : atTop}"
+{% else %}
+:class="{ 'header-transparent' : !atTop,  'header-fixed' : atTop}"
+{% endunless %}
+@scroll.window="atTop = (window.pageYOffset < 50) ? false : true">
+  <div class="relative">
+    <div class="wrapper">
+      <div class="flex justify-between py-4 lg:py-0 items-center text-white">
+        <div
+        class="lg:hidden"
+        x-data="{
+          open: false,
+          handleMenu(){
+            this.open = !this.open;
+            !this.open ? $refs.drawer_menu.classList.remove('active') : $refs.drawer_menu.classList.add('active');
+          },
+          closeMenu(){
+            if(!this.open)return;
+            this.open = false;
+            $refs.drawer_menu.classList.remove('active');
+          }
+        }"
+        @toggle-menu.window="handleMenu()"
+        @keyup.escape="closeMenu()"   
+        >
+          <button aria-label="{{ 'sections.header.menu' | t }}" @click="$dispatch('toggle-menu')">
+            {% render 'icon-burger' %}  
+          </button>
+          {% render 'drawer-menu' %}
+        </div>
+        <a href="{{ routes.root_url }}">
+          <img src="{{ section.settings.logo | img_url: '300x' }}" alt="{{ shop.name }}" width="300" height="{{ 300 | divided_by: section.settings.logo.aspect_ratio | ceil }}" class="w-[150px] md:w-[180px] lg:w-[200px] xl:w-[300px]">
+        </a>
+        <div class="flex flex-col items-end lg:pt-8">
+          <div class="flex gap-x-2 lg:gap-x-4 items-center">
+            <div class="hidden lg:block">
+              <predictive-search>
+                <form action="{{ routes.search_url }}" method="get" role="search" class="relative">
+                  <div class="group border-[2px] bg-[#d9d9d9] border-[white] bg-opacity-[17%] flex items-center focus-within:border-[#ff4100]">
+                    <input
+                      id="Search"
+                      type="search"
+                      name="q"
+                      value="{{ search.terms | escape }}"
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-owns="predictive-search-results"
+                      aria-controls="predictive-search-results"
+                      aria-haspopup="listbox"
+                      aria-autocomplete="list"
+                      autocorrect="off"
+                      autocomplete="off"
+                      autocapitalize="off"
+                      spellcheck="false"
+                      placeholder="{{ section.settings.placeholder_text | escape }}"
+                      class="bg-transparent px-2 py-1 placeholder:text-sm placeholder:text-white text-sm outline-none"
+                    >
+                    <input name="options[prefix]" type="hidden" value="last">
+                    <input type="hidden" name="type" value="product">
+                    <button type="submit" class="pr-1">
+                      {% render 'icon-search', class: 'w-[22.19px] h-[22.19px]' %}
+                    </button>
+                  </div>
+                  <div id="predictive-search" tabindex="-1" class="absolute top-full left-0 w-full bg-white text-[#13203A]" style="box-shadow: 0 1px 3px rgb(0, 0, 0, .35);"></div>
+                </form>
+              </predictive-search>
+            </div>
+            <div class="lg:hidden" x-data="{
+              open: false,
+              handleSearch(){
+                this.open = !this.open;
+                !this.open ? $refs.search_modal.classList.remove('active') : $refs.search_modal.classList.add('active');
+                if(!this.open){
+                  $refs.search_input.value = '';
+                  $refs.predictive_search.style.display = 'none';
+                }
+                $nextTick(() =>{
+                  $refs.search_input.focus();
+                })
+              }
+            }"
+            @toggle-search-modal.window="handleSearch()"
+            @keyup.escape = "$dispatch('toggle-search-modal')"
+            >
+              <a href="{{ routes.search_url }}" aria-label="{{ 'general.search.search' | t }}" @click.prevent="$dispatch('toggle-search-modal')">
+                {% render 'icon-search' %}
+              </a>
+              {% render 'search-modal' %}
+            </div>
+
+            {% if section.settings.link != blank %}
+              <a href="{{ section.settings.link }}" class="hidden lg:block btn-rounded btn-primary">Cotiza Aquí</a>
+            {% endif %}
+
+            <div 
+              x-data="{
+                open: false,
+                toggleCart(){
+                  this.open = !this.open;
+                  !this.open ? $refs.drawer_cart.classList.remove('active') : $refs.drawer_cart.classList.add('active');  
+                },
+                closeCart(){
+                  if(!this.open)return;
+                  this.open=false;
+                  $refs.drawer_cart.classList.remove('active');
+                },
+                updateCart(event){
+                  event.preventDefault();
+                  fetch('/?view=cart')
+                  .then(response => response.text())
+                  .then(data => {
+                    $refs.cart_content.innerHTML = data;
+                    const div = document.createElement('div');
+                    div.innerHTML = data;
+                    const cartCount = JSON.parse(div.querySelector('[data-options]').innerHTML).item_count;
+                    if(cartCount > 0){
+                      $refs.cart_count.innerText = cartCount
+                      $refs.cart_count.classList.remove('hidden');
+                    }else{
+                      $refs.cart_count.innerText = cartCount
+                      $refs.cart_count.classList.add('hidden');
+                    } 
+                  })
+                  .catch(error => console.error('Error: ', error))
+                }
+              }"
+              @toggle-cart.window="toggleCart()"
+              @update-cart.window="updateCart"
+              @keyup.escape="closeCart()"
+            >
+              <a href="{{ routes.cart_url }}" class="relative block" @click.prevent="$dispatch('toggle-cart')">
+                {% render 'icon-cart' %}
+                <span aria-hidden="true" class="text-white absolute -top-1 -right-1 bg-[#FF4100] text-xs w-[14px] h-[14px] rounded-[50%] flex justify-center items-center font-bold {% if cart == empty %}hidden{% endif %}" x-ref="cart_count">
+                  {{ cart.item_count }}
+                </span>  
+              </a>
+              {% render 'drawer-cart' %}
+            </div>
+          </div>
+          <nav class="hidden lg:flex justify-center lg:col-start-2 lg:col-end-5">
+            <ul class="flex items-center">
+              {% for link in linklists.main-menu.links %}
+                <li>
+                  {% if link.links.size > 0 %}
+                  <div x-data="{
+                    open: false, 
+                    handleOpen(){
+                      this.open = !this.open;  
+                      this.open ? $refs.detail.setAttribute('open', true) : $refs.detail.removeAttribute('open');  
+                    }}">
+                    <details 
+                    x-ref="detail"
+              class="block py-8 detail-submenu {% if forloop.last %}pl-4{% else %}px-4{% endif %}"
+                    @mouseover="handleOpen"
+                    @mouseout="handleOpen"
+                    >
+                      <summary class="flex items-center gap-x-1 group group-hover:text-[#FF4100] {% if link.current %}text-[#FF4100]{% endif %}">
+                        <a href="{{ link.url }}" class="block group-hover:underline group-hover:text-[#FF4100] hover:underline-offset-2 font-semibold text-sm leading-none {% if link.current %}text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                          {{ link.title | escape }}
+                        </a>
+                        <span x-ref="caret">{% render 'icon-caret', class: 'w-3 group-hover:text-[#FF4100]' %}</span>
+                      </summary>
+                      <div class="w-full absolute top-full left-0 z-[999] bg-white py-4 px-4" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+                        <div class="wrapper">
+                          <ul class="grid grid-rows-5 grid-cols-4 text-[#13203A] max-w-[980px] mx-auto grid-flow-row">
+                            {% for childlink in link.links %}
+                              <li>
+                                <a href="{{ childlink.url }}" class="block hover:underline hover:text-[#FF4100] hover:underline-offset-2 uppercase text-[15px] py-1 {% if forloop.last %} font-bold{% endif %} {% if childlink.current %} text-[#FF4100]{% endif %}" {% if childlink.current %}aria-current="page"{% endif %}>
+                                  {{ childlink.title | escape }}
+                                </a> 
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                          
+                      </div> 
+                    </details>
+                  </div>         
+                  {% else %}
+                    <a href="{{ link.url }}" class="block hover:underline hover:text-[#FF4100] hover:underline-offset-2 font-semibold text-sm py-8 leading-none {% if forloop.last %}pl-4{% else %}px-4{% endif %}{% if link.current %} text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                      {{ link.title | escape }}
+                    </a>  
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>  
+</header>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo != blank %}
+      "logo": {{ section.settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tiktok_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "t:sections.header.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Elige el logo para la tienda."
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link para el boton de cotizar."
+      },
+      {
+        "type": "text",
+        "id": "placeholder_text",
+        "label": "Texto para el placeholder", 
+        "default": "¿Qué buscas?" 
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,51 @@
+<div class="drawer-menu fixed z-[9999] w-[100vw] h-full top-0 left-0 flex justify-start bg-[rgba(10,10,10,.5)]" x-ref="drawer_menu">
+  <div class="block">
+    <div class="fixed top-0 left-0 right-0 bottom-0" @click="$dispatch('toggle-menu')"></div>
+    <div class="menu-inner bg-white h-full w-[420px] px-4 flex flex-col text-[#13203A] z-[9999]" style="max-width: calc(100vw - 3rem);">
+      <div class="flex justify-between items-start py-4">
+        {% render 'logo-vertical' %}
+        <button @click="$dispatch('toggle-menu')" aria-label="Cerrar el menú">
+          {% render 'icon-close-drawer' %}
+          <div class="sr-only">Cerrar el menu</div>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-scroll">
+        <ul role="list">
+          {% for link in linklists.main-menu.links %}
+            <li class="border-b-[0.5px] border-[#13203A]">
+              {% if link.links.size > 0 %}
+              <details class="disclosure">
+                <summary class="flex justify-between items-center">
+                  <a href="{{ link.url }}" class="font-semibold text-base block py-3{% if link.current %} text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                    {{ link.title | escape }}
+                  </a>
+                  {% render 'icon-caret', class: 'w-4' %}
+                </summary>
+                <ul class="mega-menu max-h-[10rem] overflow-y-scroll">
+                  {% for childlink in link.links %}
+                    <li>
+                      <a href="{{ childlink.url }}" class="block py-2 uppercase text-base{% if childlink.current %} text-[#FF4100]{% endif %}" {% if childlink.current %}aria-current="page"{% endif %} {% if forloop.last %}style="font-weight: bold"{% endif %}>
+                        {{ childlink.title | escape }}
+                      </a>
+                    </li>
+                  {% endfor %}    
+                </ul>
+              </details>
+              {% else %}
+                <a href="{{ link.url }}" class="font-semibold text-base block py-3{% if link.current %} text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                  {{ link.title | escape }}
+                </a>  
+              {% endif %}
+            </li>    
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="flex flex-col py-4">
+        <div class="my-4">
+          {% render 'social-list', bg_color: '#ffffff'%}
+        </div>
+        <a href="{{ section.settings.link }}" class="btn-rounded btn-primary">Cotiza Aquí</a>
+      </div>
+    </div>
+  </div>
+</div>  

@@ -1,0 +1,29 @@
+{% comment %}
+  @bg_color: for facebook icon color,
+{% endcomment %}
+<ul role="list" class="flex gap-x-2 items-center">
+  {% if settings.social_instagram_link != blank %}
+    <li class="">
+      <a href="{{ settings.social_instagram_link }}" class="transition-opacity duration-500 ease-in-out hover:opacity-70" target="_blank">
+        {% render 'icon-instagram' %}
+        <span class="sr-only">Instagram</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_facebook_link != blank %}
+    <li class="">
+      <a href="{{ settings.social_facebook_link }}" class="transition-opacity duration-500 ease-in-out hover:opacity-70" target="_blank">
+        {% render 'icon-facebook', icon_color: bg_color %}
+        <span class="sr-only">Facebook</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_whatsapp_link != blank %}
+    <li class="">
+      <a href="{{ settings.social_whatsapp_link }}" class="transition-opacity duration-500 ease-in-out hover:opacity-70 w-8" target="_blank">
+        {% render 'icon-whatsapp' %}
+        <span class="sr-only">Whatasapp</span>
+      </a>
+    </li>
+  {% endif %}
+</ul>

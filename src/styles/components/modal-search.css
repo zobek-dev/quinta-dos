@@ -1,0 +1,17 @@
+/* Search modal interaction */
+
+.modal-search{
+  @apply invisible transition-[visibility] duration-200 ease-linear;
+}
+
+.modal-search.active{
+  @apply visible;
+}
+
+.search-inner{
+  @apply -translate-y-full transition-transform duration-200 ease-linear;
+}
+
+.modal-search.active .search-inner{
+  @apply translate-y-0;
+}

@@ -1,0 +1,7 @@
+<form action="{{ routes.cart_add_url }}" method="POST">
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  <input type="hidden" name="quantity" value="1">
+  <button>
+    Agregar al carro
+  </button>
+</form>
