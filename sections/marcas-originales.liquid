@@ -1,0 +1,84 @@
+<div class="bar text-center bg-[#FF4100] py-4 lg:py-12 relative w-full">
+  <h3 class="font-black text-base lg:text-[30px] uppercase text-white px-4">
+    {{ section.settings.title }}
+  </h3>
+</div>
+<div class="py-8 lg:py-12">
+  <div class="wrapper">
+    <marcas-carousel>
+      <div class="marcas-carousel marcas-carousel__{{ section.id }} relative overflow-hidden pt-4 pb-8 lg:pb-4">
+        <ul class="swiper-wrapper flex items-center">
+          {% for block in section.blocks %}
+            <li class="swiper-slide flex justify-center items-center">
+              {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}">
+              {% endif %}
+                <img
+                  src="{{ block.settings.image | img_url: '150x' }}"
+                  width="{{ block.settings.size }}"
+                  alt="{{ block.settings.title | escape }}"
+                  heigth="{{ block.settings.size | divided_by: block.settings.image.aspect_ratio | ceil }}"
+                  loading="lazy">
+              {% if block.settings.link != blank %}
+              </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="swiper-pagination lg:hidden"></div>
+      </div>
+    </marcas-carousel>
+    <span class="text-center block text-[rgba(255,65,0,0.41)] text-[14px] lg:text-[30px] font-black">y más...</span>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Marcas Originales",
+    "tag": "section",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Inserta texto de la barra",
+        "default": "<p>Encuentra todas las marcas | 100% originales </p>"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "marcas",
+        "name": "Marcas",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Inserta una imagen para la marca"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "inserta el nombre de la marca (SEO)"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Inserta el link de la marca"
+          },
+          {
+            "type": "range",
+            "id": "size",
+            "min": 100,
+            "max": 150,
+            "step": 2,
+            "default": 150,
+            "label": "Elige el ancho de los íconos."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Marcas Originales"
+      }
+    ]
+  }
+{% endschema %}

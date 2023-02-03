@@ -115,5 +115,60 @@ Shopify.CountryProvinceSelector.prototype = {
   }
 };
 
+546
+// Carousels
 
+class MarcasCarousel extends HTMLElement{
+  constructor(){
+    super();
+    this.carousel = this.querySelector('.marcas-carousel');
+    this.pagination = this.querySelector('.swiper-pagination');
 
+    this.swiper = new Swiper(this.carousel, {
+      modules: [Pagination],
+      slidesPerView: 2,
+      spaceBetween: 16,
+      breakpoints: {
+        550: {
+          slidesPerView: 4
+        },
+        1024: {
+          slidesPerView: 6
+        }
+      },
+      pagination:{
+        el: this.pagination,
+        clickeable: true
+      }
+    })
+  }
+}
+
+customElements.define('marcas-carousel', MarcasCarousel);
+
+class ProductCarousel extends HTMLElement{
+  constructor(){
+    super();
+    this.thumbnail = this.querySelector('.product-thumbnail');
+    this.gallery = this.querySelector('.product-gallery')
+    console.log(this.gallery);
+
+    this.thumb = new Swiper(this.thumbnail, {
+      spaceBetween: 16,
+      slidesPerView: 3,
+      loop: true,
+      breakpoints: {
+        1024:{
+          slidesPerView: 5
+        }
+      }
+    })
+
+    this.gall = new Swiper(this.gallery, {
+      slidesPerView: 1,
+      loop: true
+    })
+  }
+}
+
+customElements.define('product-carousel', ProductCarousel)

@@ -1,6 +1,6 @@
-<footer class="bg-white py-12">
+<footer class="bg-white py-8 lg:py-12">
   <div class="wrapper">
-    <ul class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <ul class="grid grid-cols-1 lg:grid-cols-4 gap-4">
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'contact' %}
@@ -14,7 +14,7 @@
           {% when 'menu' %}
           <li>
             {% assign menu = linklists[block.settings.menu_uno] %}
-            <div class="mb-8">
+            <div class="mb-4">
               <h2 class="text-[18px] font-bold uppercase mb-2">{{ menu.title | escape }}</h2>
               <ul>
                 {% for link in menu.links %}
@@ -45,7 +45,7 @@
           </li>
           {% when 'location' %}
           <li>
-            <div class="mb-8">
+            <div class="mb-4">
               {% assign locations = linklists[block.settings.menu_uno] %}
               <h3 class="text-[18px] font-bold uppercase mb-2">{{ locations.title | escape }}</h2>
               <ul>
@@ -97,13 +97,44 @@
                   {{ block.settings.pay_title_one | escape }}
                 </li>
               {% endif %}
+              {% if block.settings.pay_title_two != blank and block.settings.pay_image_two != blank %}
+                <li class="mb-1">
+                  <img
+                  src="{{ block.settings.pay_image_two | img_url: '150' }}"
+                  alt="{{ block.settings.pay_title_two }}"
+                  width="150"
+                  height="{{ 150 | divided_by: settings.pay_image_two.aspect_ratio | ceil }}"
+                  loading="lazy"
+                  >
+                </li> 
+              {%  elsif block.settings.pay_title_two != blank and block.settings.pay_image_two == blank %}
+                <li class="mb-1">
+                  {{ block.settings.pay_title_two | escape }}
+                </li>
+              {% endif %}
+              {% if block.settings.pay_title_three != blank and block.settings.pay_image_three != blank %}
+                <li class="mb-1">
+                  <img
+                  src="{{ block.settings.pay_image_three | img_url: '150' }}"
+                  alt="{{ block.settings.pay_title_three }}"
+                  width="150"
+                  height="{{ 150 | divided_by: settings.pay_image_three.aspect_ratio | ceil }}"
+                  loading="lazy"
+                  >
+                </li> 
+              {%  elsif block.settings.pay_title_three != blank and block.settings.pay_image_three == blank %}
+                <li class="mb-1">
+                  {{ block.settings.pay_title_three | escape }}
+                </li>
+              {% endif %}
             </ul>
-
           </li>
         {% endcase %}
-
       {% endfor %}
     </ul>
+    <div class="mt-8 lg:mt-12 text-center">
+      <span class="text-[8px] sm:text-xs leading-[1.1]">&copy; Quínta Desarmaduría {{ 'now' | date: '%Y' }}, diseñado y desarrollado por <a href="https://vanilla.cl" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">Vanilla</a> y <a href="https://mediahuella.com" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">Mediahuella</a></span>
+    </div>
   </div>
 </footer>
 

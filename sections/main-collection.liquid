@@ -1,1 +1,330 @@
-<h1>Collection</h1>
+<div x-data="{
+  loading: false,
+  applySortAndFilter(event){
+    loading = true;
+    const sort = $refs.sort.value;
+    const isMobile = event.target.id.includes('Mobile') ? true : false;
+    const form = !isMobile ? $refs.form_desktop : $refs.form_mobile;
+    const queryParams = new URLSearchParams(new FormData(form)).toString();
+    let url = !isMobile ? '/collections/{{ collection.handle }}?sort_by=' + sort + '&' + queryParams:'/collections/{{ collection.handle }}?' + queryParams; 
+
+    console.log(url)
+    fetch(url)
+    .then(response => response.text())
+    .then( data => {
+      const div = document.createElement('div');
+      div.innerHTML = data;
+      const htmlData = div.querySelector('#ProductGrid').innerHTML;
+      const activeFilters = div.querySelector('#ActiveFilters').innerHTML;
+      const productCount = div.querySelector('#Count').textContent;
+      const mobileActiveFilters = div.querySelector('#ActiveMobileFilters').innerHTML;
+      document.querySelector('#ProductGrid').innerHTML = htmlData;
+      document.querySelector('#ActiveFilters').innerHTML = activeFilters;
+      document.querySelector('#Count').innerText = productCount;
+      document.querySelector('#ActiveMobileFilters').innerHTML = mobileActiveFilters;
+      history.replaceState(null,null,url);
+    })
+    .catch(error => console.error('Error:', error))
+    .finally(() => loading = false)  
+  },
+  open:false,
+  toggleFilter(){
+    this.open = !this.open;
+    $refs.filters_mobile.classList.toggle('hidden');
+  },       
+}"
+@filter.window="applySortAndFilter($event)"
+@toggle-filter.window="toggleFilter()"
+>
+  <div class="wrapper">
+    <h1 class="font-black text-[#13203A] text-[30px] lg:text-[40px] uppercase my-4 lg:my-8 leading-none">{{ collection.title | escape }}</h1>
+    <div class="flex justify-between items-center lg:pb-4">
+      <div class="block lg:hidden w-full">
+        <button class="btn-rounded btn-blue w-full" @click="()=>toggleFilter()">
+          Ordenar o filtrar
+        </button>
+        <div class="hidden pt-8" x-ref="filters_mobile">
+          <form id="Form-Mobile-{{ section.id }}" class="block w-full" x-ref="form_mobile">
+            <div class="active-filters block mb-4" id="ActiveMobileFilters">                               
+              {% for filter in collection.filters -%}                                                                                               {%- if filter.type == "price_range" -%}
+                  {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                    <a href="{{ filter.url_to_remove }}" class="inline-flex items-center w-max px-4 py-2 rounded-3xl border border-[#13203A] uppercase text-sm mr-2 mb-2">
+                      <span class="flex gap-x-2 items-center">
+                        {%- assign min_value = filter.min_value.value | default: 0 -%}
+                        {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                        {{ min_value | money }} - {{ max_value | money }}
+                        {% render 'icon-close-small' %}
+                        <span class="sr-only">Quitar Filtro</span>
+                      </span> 
+                    </a> 
+                  {%- endif -%}
+                {%- else -%}
+                  {%- for filter_value in filter.active_values -%}
+                    <a href="{{ filter_value.url_to_remove }}" class="inline-flex items-center w-max px-4 py-2 rounded-3xl border border-[#13203A] uppercase text-sm mr-2 mb-2">
+                      <span class="flex gap-x-2 items-center">
+                        {{ filter.label }}: {{ filter_value.label }}
+                        {% render 'icon-close-small' %}
+                        <span class="sr-only">Quitar Filtro</span>
+                      </span>   
+                    </a>
+                  {%- endfor -%}
+                {%- endif- %}
+              {%- endfor -%}
+              <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}" class="inline-flex underline underline-offset-2 mr-1 text-sm uppercase">Quitar Todos</a>
+            </div>
+            <div class="mb-4">
+              <h3 class="text-base font-semibold uppercase mb-3">Ordenar Por</h3>
+              <select id="sort-by-Mobile" x-ref="sort" name="sort_by" class="p-1 text-base bg-white border border-[#4a4a49]  rounded-sm w-full" @input.debounce.300ms="$dispatch('filter')">
+                {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+                {% for option in collection.sort_options %}
+                  <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif  %}>
+                    {{ option.name }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-4">
+              <h3 class="text-base font-semibold uppercase">Filtrar por</h3>
+              {%- for filter in collection.filters -%}
+              {% comment %} {% if template == 'search' %}
+              <input type="hidden" name="q" value="{{ object.terms }}">
+              <input type="hidden" name="type" value="product">
+              <input type="hidden" name="options[prefix]" value="last">
+              {% endif %} {% endcomment %}
+              <details class="filter-group border-b border-[#13203A] py-3">
+                <summary class="flex cursor-pointer justify-between items-center">
+                  <div>
+                    <span>{{ filter.label }}</span>
+                  </div>
+                  {% render 'icon-caret', class: 'w-4 transition-transform duration-50' %}
+                </summary>
+            
+                <div class="filter-group-display pt-3">     
+                  {%- case filter.type -%}
+                    {%- when 'boolean' or 'list' -%}
+                      <ul class="filter-group-display__list">
+                        {%- for filter_value in filter.values -%}
+                          <li class="flex items-center justify-between mb-1">
+                            <label for="Filter-Mobile-{{ filter.param_name }}-{{ forloop.index }}">
+                              {{ filter_value.label }}
+                            </label>  
+                            <input type="checkbox"
+                              name="{{ filter_value.param_name }}"
+                              value="{{ filter_value.value }}"
+                              id="Filter-Mobile-{{ filter.param_name }}-{{ forloop.index }}"
+                              {% if filter_value.active -%}checked{%- endif %}
+                              {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%-   endif %}
+                              class="accent-[#4a4a49] cursor-pointer"
+                              @input.debounce.300ms="$dispatch('filter')"
+                            >
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- when 'price_range' -%}
+                      <div class="filter-group-display__price-range mb-1 flex gap-x-2">
+                        <div class="filter-group-display__price-range-from">
+                          <label for="Filter-Mobile-{{ filter.min_value.param_name }}" class="text-[10px] text- [#555]">Desde</label>
+                          <div class="border border-[#4a4a49] rounded-sm p-1">
+                            <span>{{ cart.currency.symbol }}</span>
+                            <input name="{{ filter.min_value.param_name }}"
+                              id="Filter-Mobile-{{ filter.min_value.param_name }}"
+                              {% if filter.min_value.value -%}
+                                value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                              {%- endif %}
+                              type="number"
+                              placeholder="0"
+                              min="0"
+                              max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                              class="border-none outline-none"
+                              @input.debounce.300ms="$dispatch('filter')"
+                            >
+                          </div>  
+                        </div>
+                        <div class="filter-group-display__price-range-to">
+                          <label for="Filter-Mobile-{{ filter.max_value.param_name }}" class="text-[10px] text- [#555]">Hasta</label>
+                          <div class="border border-[#4a4a49] rounded-sm p-1">
+                            <span>{{ cart.currency.symbol }}</span>
+                            <input name="{{ filter.max_value.param_name }}"
+                              id="Filter-Mobile-{{ filter.max_value.param_name }}"
+                              {% if filter.max_value.value -%}
+                                value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                              {%- endif %}
+                              type="number"
+                              placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                              min="0"
+                              max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                              class="border-none outline-none"
+                              @input.debounce.300ms="$dispatch('filter')"
+                            >   
+                          </div>  
+                        </div>
+                      </div>
+                  {%- endcase -%}
+                </div>
+              </details>
+            {%- endfor -%}
+            </div> 
+          </form>
+        </div>
+      </div>
+      
+      <div class="hidden lg:block" id="ActiveFilters">                            
+        {%- for filter in collection.filters -%}                                                                                               
+          {%- if filter.type == "price_range" -%}
+            {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+              <a href="{{ filter.url_to_remove }}" class="inline-flex items-center w-max px-4 py-2 rounded-3xl border border-[#13203A] uppercase text-sm mr-2 mb-2">
+                <span class="flex gap-x-2 items-center">
+                  {%- assign min_value = filter.min_value.value | default: 0 -%}
+                  {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                  {{ min_value | money }} - {{ max_value | money }}
+                  {% render 'icon-close-small' %}
+                  <span class="sr-only">Quitar Filtro</span>
+                </span> 
+              </a> 
+            {%- endif -%}
+          {%- else -%}  
+            {%- for filter_value in filter.active_values -%}
+              <a href="{{ filter_value.url_to_remove }}" class="inline-flex items-center w-max px-4 py-2 rounded-3xl border border-[#13203A] uppercase text-sm mr-2 mb-2">
+                <span class="flex gap-x-2 items-center">
+                  {{ filter.label }}: {{ filter_value.label }}
+                  {% render 'icon-close-small' %}
+                  <span class="sr-only">Quitar Filtro</span>
+                </span>   
+              </a>
+            {%- endfor -%}
+          {%- endif -%}  
+        {%- endfor -%}
+        <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}" class="inline-flex underline underline-offset-2 mr-1 text-sm uppercase">
+          Quitar Todos
+        </a>
+      </div>
+
+      <div class="lg:flex items-center gap-x-2 hidden">
+        <span class="text-base hidden md:block">Ordenar por:</span>
+        <select id="sort-by" x-ref="sort" class="hidden lg:block text-sm lg:text-base px-1 py-1 bg-white border border-[#4a4a49] rounded-sm" @input.debounce.300ms="$dispatch('filter')">
+          {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+          {% for option in collection.sort_options %}
+            <option value="{{ option.value }}" class="text-sm lg:text-base" {% if option.value == sort_by %}selected="selected"{% endif %}>
+              {{ option.name }}
+            </option>
+          {% endfor %}
+        </select>
+        <span class="text-sm lg:text-base" id="Count">{{ collection.products.size }} productos</span>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-4 gap-x-4">
+      <aside class="hidden lg:block col-span-1 pr-4 sticky top-32 self-start py-8">
+        <form id="Form-Desktop-{{ section.id }}" class="block w-full" x-ref="form_desktop">
+          <div class="mb-4 ">
+            <h3 class="text-xl font-black uppercase my-4">Filtrar por</h3>
+            {%- for filter in collection.filters -%}
+            {% comment %} {% if template == 'search' %}
+            <input type="hidden" name="q" value="{{ object.terms }}">
+            <input type="hidden" name="type" value="product">
+            <input type="hidden" name="options[prefix]" value="last">
+            {% endif %} {% endcomment %}
+            <details class="filter-group border-b border-[#13203A] py-4">
+              <summary class="flex cursor-pointer justify-between items-center">
+                <div>
+                  <span>{{ filter.label }}</span>
+                </div>
+                {% render 'icon-caret', class: 'w-4 transition-transform duration-50' %}
+              </summary>
+          
+              <div class="filter-group-display pt-3">     
+                {%- case filter.type -%}
+                  {%- when 'boolean' or 'list' -%}
+                    <ul class="filter-group-display__list">
+                      {%- for filter_value in filter.values -%}
+                        <li class="flex items-center justify-between mb-1">
+                          <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                            {{ filter_value.label }}
+                          </label>  
+                          <input type="checkbox"
+                            name="{{ filter_value.param_name }}"
+                            value="{{ filter_value.value }}"
+                            id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                            {% if filter_value.active -%}checked{%- endif %}
+                            {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%-   endif %}
+                            class="accent-[#4a4a49] cursor-pointer"
+                            @input.debounce.300ms="$dispatch('filter')"
+                          >
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- when 'price_range' -%}
+                    <div class="filter-group-display__price-range mb-1 flex gap-x-2">
+                      <div class="filter-group-display__price-range-from">
+                        <label for="Filter-{{ filter.min_value.param_name }}" class="text-[10px] text- [#555]">Desde</label>
+                        <div class="border border-[#4a4a49] rounded-sm p-1">
+                          <span>{{ cart.currency.symbol }}</span>
+                          <input name="{{ filter.min_value.param_name }}"
+                            id="Filter-{{ filter.min_value.param_name }}"
+                            {% if filter.min_value.value -%}
+                              value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                            {%- endif %}
+                            type="number"
+                            placeholder="0"
+                            min="0"
+                            max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            class="border-none outline-none"
+                            @input.debounce.300ms="$dispatch('filter')"
+                          >
+                        </div>  
+                      </div>
+                      <div class="filter-group-display__price-range-to">
+                        <label for="Filter-{{ filter.max_value.param_name }}" class="text-[10px] text- [#555]">Hasta</label>
+                        <div class="border border-[#4a4a49] rounded-sm p-1">
+                          <span>{{ cart.currency.symbol }}</span>
+                          <input name="{{ filter.max_value.param_name }}"
+                            id="Filter-{{ filter.max_value.param_name }}"
+                            {% if filter.max_value.value -%}
+                              value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                            {%- endif %}
+                            type="number"
+                            placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            min="0"
+                            max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            class="border-none outline-none"
+                            @input.debounce.300ms="$dispatch('filter')"
+                          >   
+                        </div>  
+                      </div>
+                    </div>
+                {%- endcase -%}
+              </div>
+            </details>
+          {%- endfor -%}
+          </div> 
+        </form>
+      </aside>      
+      <div class="col-span-1 lg:col-span-3 pt-8 pb-8 lg:pb-12 h-max relative" id="ProductGrid">
+        {% render 'loader' %}
+        {% paginate collection.products by 12 %}
+          <ul class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8 lg:mb-12">
+            {% for product in collection.products %}
+              {% liquid
+                assign desarme = false
+                for col in product.collections
+                  if col.handle == 'en-desarme'
+                    assign desarme = true
+                  endif
+                endfor
+              %}
+              {% if desarme %}
+                {% render 'product-card-desarme', product: product %}  
+              {% else %}  
+                {% render 'product-card', product: product %}    
+              {% endif %}        
+            {% endfor %}
+          </ul>
+          {% if paginate.pages > 1 %}
+            {% render 'pagination', paginate: paginate %}
+          {% endif %}
+        {% endpaginate %}
+      </div>
+    </div>
+  </div>
+</div>

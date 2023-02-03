@@ -1,0 +1,54 @@
+<div class="w-full bg-cover bg-center bg-no-repeat relative" style="background-image: url({{ section.settings.image | img_url: 'master' }})">
+  <div class="bg-[rgba(19,32,58,0.79)] text-white rgba(19, 32, 58, 0.79);">
+    <div class="wrapper py-12 lg:py-20 text-center">
+      <h2 class="title-rich text-white uppercase font-black text-[24px] lg:text-[36px] leading-[1.1] mb-4">
+        {{ section.settings.question }}
+      </h2>
+      <p class="text-base lg:text-[24px]">
+        {{ section.settings.response | escape }}
+      </p>
+      <a href="{{ section.settings.link }}" class="btn-rounded btn-primary text-sm lg:text-base mt-8 mx-auto">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Quieres Vender",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Imagen para el fondo"
+      },
+      {
+        "type": "richtext",
+        "id": "question",
+        "label": "Texto para la pregunta",
+        "default": "<p>¿Quieres <strong>Vender</strong> tu vehículo?</p>"
+      },
+      {
+        "type": "text",
+        "id": "response",
+        "label": "Respuesta para la pregunta",
+        "default": "Compramos tu auto chocado. ¡Recibe tu pago el mismo día!"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link para el boton"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "texto para el boton",
+        "default": "Contactanos"
+      }
+    ],
+    "presets": [{
+      "name": "Quieres Vender"
+    }]
+  }
+{% endschema %}

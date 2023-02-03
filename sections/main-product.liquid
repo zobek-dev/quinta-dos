@@ -1,7 +1,42 @@
-<form action="{{ routes.cart_add_url }}" method="POST">
-  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-  <input type="hidden" name="quantity" value="1">
-  <button>
-    Agregar al carro
-  </button>
-</form>
+<div class="wrapper">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div class="col-span-1">
+      <product-carousel class="flex flex-col gap-4">
+        <div class="product-gallery product-gallery__{{ section.id }} overflow-hidden flex-1" data-count="{{ product.images.size }}">
+          <ul class="swiper-wrapper flex items-center">
+            {% for image in product.images %}
+              <li class="swiper-slide overflow-hidden flex justify-center items-center">
+                <img 
+                src="{{ image.src | img_url: '600x' }}"  
+                alt="{{ image.alt }}" 
+                width="600"
+                height="{{ 600 | divided_by: image.aspect_ratio | ceil }}"
+                class="object-contain object-center"
+                loading="lazy">
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="product-thumbnail product-thumbnail__{{ section.id }} overflow-hidden">
+          <ul class="swiper-wrapper">
+            {% for image in product.images %}
+              <li class="swiper-slide border border-[#13203A] overflow-hidden">
+                <img 
+                src="{{ image.src | img_url: '150x' }}" 
+                alt="{{ image.alt }}" 
+                width="150"
+                height="{{ 150 | divided_by: image.aspect_ratio | ceil }}"
+                class="aspect-square object-center object-cover"
+                loading="lazy"
+                >
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </product-carousel>
+    </div>
+    <div class="right">
+
+    </div>
+  </div>
+</div>

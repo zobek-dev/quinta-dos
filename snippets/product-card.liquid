@@ -1,0 +1,102 @@
+{%- liquid
+  assign on_sale = false
+  assign month = 30 | times: 24 | times: 60 | times: 60
+  assign date_created = product.created_at | date: "%Y-%m-%d"
+  assign dead_line = "now" | date: "%s" | minus: month | date: "%Y-%m-%d"
+  if product.compare_at_price_max > product.price
+    assign on_sale = true
+  endif
+-%}
+
+<li class="{{ class }} relative" x-data="{
+  loading:false,
+  addToCart(){
+    loading = true;
+    let formData = new FormData($refs.product_form);
+    fetch('/cart/add.js', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(response => {
+      $dispatch('update-cart');
+      $dispatch('toggle-cart');
+    })
+    .catch(error=> console.error('Error ', error))
+    .finally(()=> loading = false)
+  }
+}">
+  <div class="relative">
+    {% if on_sale %}
+      {% assign porcentage = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
+      <span class="absolute top-1 right-0 text-center bg-[#FF4100] text-white uppercase font-bold rounded-[50px] text-sm px-4 py-1">
+        {{ porcentage }}% OFF
+      </span>
+    {% endif %}
+    {% if date_created > dead_line %}
+      <span class="absolute bottom-1 left-0 text-center bg-[#00C13E] text-white uppercase font-bold rounded-tr-[50px] text-sm rounded-br-[50px] px-4 py-1">
+        Nuevo
+      </span>
+    {% endif %}
+
+    {% comment %} bg-[#00C13E] {% endcomment %}
+    <img
+      src="{{ product.featured_image.src | img_url: '500x' }}"
+      alt="{{ product.featured_image.alt | escape }}"
+      width="500"
+      height="{{ 500 | divided_by: product.featured_image.aspect_ratio | ceil }}"
+      loading="lazy"
+      class="w-full object-cover aspect-square object-center">
+    <a href="{{ product.url }}" class="block absolute top-0 left-0 bottom-0 right-0 z-[2]"></a>
+  </div>
+  {% unless product.available %}
+    <div class="bg-[#13203A] absolute bg-opacity-[65%] w-full h-full left-0 top-0 z-[10] flex justify-center items-center">
+      <a href="{{ product.url }}" class="absolute top-0 left-0 bottom-0 right-0 z-[10]"></a>
+      <span class="text-center bg-[#C7C7C7] bg-opacity-[25%] text-white uppercase font-bold rounded-[50px] px-4 py-1">Agotado</span>
+    </div>
+  {% endunless %}
+  <div class="pb-2">
+    <a href="{{ product.url }}">
+      <h3 class="uppercase text-[#13203A] font-black text-[18px] lg:text-[22px] line-clamp-2 leading-none my-2">{{ product.title | escape }}</h3>
+      <p class="text-[13px] lg:text-[15px] text-semibold leading-none mb-2 line-clamp-2">{{ product.metafields.custom.caracter_sticas.value | escape }}</p>
+      <div class="flex items-center gap-x-2">
+        {% if on_sale %}
+          <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
+          <span class="text-[#FF4100] uppercase font-black text-[18px] lg:text-[22px]">{{ product.price | money }}</span>
+          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+          <s class="italic text-xs lg:text-sm decoration-[rgba(19,32,58,.5)] text-[rgba(19,32,58,.5)]">{{ product.compare_at_price_max | money }}</s>
+        {% else %}
+          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+          <span class="text-[#FF4100] uppercase font-black text-[18px] lg:text-[22px]">{{ product.price | money }}</span>
+        {% endif %}
+      </div>
+    </a>
+  </div>
+  <form
+    action="{{ routes.cart_add_url }}"
+    x-ref="product_form"
+    id="ProductCard-Form-{{ product.selected_or_first_available_variant.id }}">
+    <input
+      type="hidden"
+      name="id"
+      value="{{ product.selected_or_first_available_variant.id }}">
+    <input
+      type="hidden"
+      name="quantity"
+      value="1">
+  </form>
+  <div class="flex items-center">
+    <a
+      href="#"
+      name="add"
+      role="button"
+      class="btn-card btn-primary"
+      @click.prevent="addToCart"
+    >
+      Comprar
+    </a>
+    <a href="{{ product.url }}" class="btn-card btn-blue">
+      Ver detalle
+    </a>
+  </div>
+</li> 
