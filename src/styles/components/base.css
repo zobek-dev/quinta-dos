@@ -102,3 +102,11 @@ input[type="checkbox"]:checked::before {
 .filter-group[open] summary svg {
   @apply rotate-180
 }
+
+.product-thumbnail .swiper-slide{
+  @apply opacity-70 
+}
+
+.product-thumbnail .swiper-slide-active{
+  @apply border border-[#FF4100] opacity-100;
+}

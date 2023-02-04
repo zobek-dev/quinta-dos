@@ -5,6 +5,15 @@ import fslightbox from 'fslightbox';
 window.Alpine = Alpine;
 Alpine.start();
 
+
+window.addEventListener('DOMContentLoaded', () => {
+  if(document.querySelector('.fslightbox')){
+    fslightbox.initialize({
+      selector: '.fslightbox'
+    })
+  }
+})
+
 /*
  * Shopify Common JS
  *
@@ -150,25 +159,38 @@ class ProductCarousel extends HTMLElement{
   constructor(){
     super();
     this.thumbnail = this.querySelector('.product-thumbnail');
-    this.gallery = this.querySelector('.product-gallery')
-    console.log(this.gallery);
+    this.gallery = this.querySelector('.product-gallery');
+    this.count = Number(this.gallery.dataset.count);
 
     this.thumb = new Swiper(this.thumbnail, {
+      modules: [Controller],
       spaceBetween: 16,
       slidesPerView: 3,
       loop: true,
       breakpoints: {
-        1024:{
+        600:{
           slidesPerView: 5
         }
-      }
+      },
+      centeredSlides: true,
+      loopedSlides: this.count,
+      slideToClickedSlide: true
     })
 
     this.gall = new Swiper(this.gallery, {
+      modules:[Controller],
       slidesPerView: 1,
-      loop: true
+      loop: true,
+      autoHeight: true,
+      centeredSlides: true,
+      loopedSlides: this.count
     })
+
+
+    this.gall.controller.control = this.thumb;
+    this.thumb.controller.control = this.gall;
   }
 }
 
-customElements.define('product-carousel', ProductCarousel)
+customElements.define('product-carousel', ProductCarousel);
+

@@ -1,0 +1,56 @@
+<div class="bg-cover bg-no-repeat bg-center  relative hero overflow-hidden h-[800px]" style="background: linear-gradient(#13203A, transparent), url({{ section.settings.image | img_url: 'master' }}); background-repeat: no-repeat; background-position: top-right;">
+  <div class="bg-[rgba(19,32,58,0.4)] w-full">
+    <div class="wrapper py-64">
+      <h1 class="text-white uppercase leading-none font-black lg:text-[60px] max-w-[750px] title-rich mb-8">
+        {{ section.settings.title }}
+      </h1>
+      <div class="text-white max-w-[750] lg:text-[24px] mb-8">
+        {{ section.settings.content }}
+      </div>
+      <a href="" class="btn-rounded btn-primary">
+        {{ section.settings.link_text | escape }}
+      </a>
+    </div>   
+  </div> 
+</div>
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Inserta una imagen para el Hero"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Inserta el título",
+      "default": "<p>¿Necesitas <strong>repuestos o accesorios</strong> para tu vehículo?</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Inserte el texto",
+      "default": "<p>Puedes revisar nuestro stock o los vehículos que tenemos en desarme para cotizar.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Inserta el texto para el boton",
+      "default": "Buscar Repuestos"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Inserta el link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}  
+{% endschema %}  
