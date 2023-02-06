@@ -35,7 +35,7 @@
         <a href="{{ routes.root_url }}">
           <img src="{{ section.settings.logo | img_url: '300x' }}" alt="{{ shop.name }}" width="300" height="{{ 300 | divided_by: section.settings.logo.aspect_ratio | ceil }}" class="w-[150px] md:w-[180px] lg:w-[200px] xl:w-[300px]">
         </a>
-        <div class="flex flex-col items-end lg:pt-8">
+        <div class="flex flex-col items-end lg:pt-6">
           <div class="flex gap-x-2 lg:gap-x-4 items-center">
             <div class="hidden lg:block">
               <predictive-search>
@@ -154,12 +154,12 @@
                     }}">
                     <details 
                     x-ref="detail"
-              class="block py-8 detail-submenu {% if forloop.last %}pl-4{% else %}px-4{% endif %}"
+              class="block py-6 detail-submenu {% if forloop.last %}pl-4{% else %}px-4{% endif %}"
                     @mouseover="handleOpen"
                     @mouseout="handleOpen"
                     >
                       <summary class="flex items-center gap-x-1 group group-hover:text-[#FF4100] {% if link.current %}text-[#FF4100]{% endif %}">
-                        <a href="{{ link.url }}" class="block group-hover:underline group-hover:text-[#FF4100] hover:underline-offset-2 font-semibold text-sm leading-none {% if link.current %}text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                        <a href="{{ link.url }}" class="block group-hover:underline group-hover:text-[#FF4100] hover:underline-offset-2 whitespace-nowrap font-semibold text-sm leading-none {% if link.current %}text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
                           {{ link.title | escape }}
                         </a>
                         <span x-ref="caret">{% render 'icon-caret', class: 'w-3 group-hover:text-[#FF4100]' %}</span>
@@ -181,7 +181,7 @@
                     </details>
                   </div>         
                   {% else %}
-                    <a href="{{ link.url }}" class="block hover:underline hover:text-[#FF4100] hover:underline-offset-2 font-semibold text-sm py-8 leading-none {% if forloop.last %}pl-4{% else %}px-4{% endif %}{% if link.current %} text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                    <a href="{{ link.url }}" class="block hover:underline hover:text-[#FF4100] hover:underline-offset-2 font-semibold whitespace-nowrap text-sm py-6 leading-none {% if forloop.last %}pl-4{% else %}px-4{% endif %}{% if link.current %} text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
                       {{ link.title | escape }}
                     </a>  
                   {% endif %}

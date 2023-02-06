@@ -194,3 +194,66 @@ class ProductCarousel extends HTMLElement{
 
 customElements.define('product-carousel', ProductCarousel);
 
+//Iconos
+
+class IconsCarousel extends HTMLElement {
+  constructor(){
+    super();
+
+    this.carousel = this.querySelector('.carousel-icons');
+    this.pagination = this.querySelector('.swiper-pagination');
+
+    this.swiper = new Swiper(this.carousel, {
+      modules: [Pagination],
+      slidesPerView: 1,
+      spaceBetween: 16,
+      breakpoints: {
+        550: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 4
+        }
+      },
+      pagination: {
+        el: this.pagination,
+        clickable: true
+      }
+    })
+  }
+}
+
+customElements.define('carousel-icons', IconsCarousel);
+
+//Carousel Desarme
+
+class DesarmeCarousel extends HTMLElement{
+  constructor(){
+    super();
+    this.carousel = this.querySelector('.carousel-desarme');
+    this.next = this.querySelector('.swiper-button-next');
+    this.prev = this.querySelector('.swiper-button-prev');
+
+    this.swiper = new Swiper(this.carousel, {
+      modules: [Navigation],
+      slidesPerView: 1.5,
+      spaceBetween: 16,
+      breakpoints: {
+        550: {
+          slidesPerView: 2.5
+        },
+        1024: {
+          slidesPerView: 3.5
+        }
+      },
+      navigation:{
+        nextEl: this.next,
+        prevEl: this.prev
+      }
+    })
+
+  }
+}
+
+customElements.define('carousel-desarme', DesarmeCarousel);
+

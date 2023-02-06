@@ -1,0 +1,50 @@
+<div class="wrapper py-4 my-8">
+  <h2 class="title-rich font-black text-[30px] uppercase text-center leading-[1.1] mb-4">{{ section.settings.title }}</h2>
+  <div class="text-center leading-[1.1]">
+    {{ section.settings.bajada }}
+  </div>
+  <carousel-desarme>
+    <div class="carousel-desarme carousel-desarme-{{ section.id }} overflow-hidden relative py-8">
+      <ul class="swiper-wrapper">
+        {% for product in collections[section.settings.coll_handler].products limit: 5 %}
+          {% render 'product-card-desarme', product: product, class: 'swiper-slide' %}
+        {% endfor %}
+      </ul>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </carousel-desarme>
+  <a href="{{ collections[section.settings.coll_handler].url }}" class="btn-rounded btn-primary mx-auto">Ver todo desarme</a>
+</div>
+
+{% schema %}
+  {
+    "name": "En Desarme Home",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Insertar el título",
+        "default": "<p>Últimos vehículos <strong>en desarme</strong></p>"
+      },
+      {
+        "type": "richtext",
+        "id": "bajada",
+        "label": "Inserta el texto para la bajada",
+        "default": "<p>Revisa nuestros últimos vehículos recibidos y cotiza con nosotros.</p>"
+      },
+      {
+        "type": "collection",
+        "id": "coll_handler",
+        "label":"Elige la colección"
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "En desarme Home"
+      }
+    ]
+  }
+{% endschema %}

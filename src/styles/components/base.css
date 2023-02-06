@@ -110,3 +110,22 @@ input[type="checkbox"]:checked::before {
 .product-thumbnail .swiper-slide-active{
   @apply border border-[#FF4100] opacity-100;
 }
+
+.carousel-icons .swiper-pagination{
+  bottom: 0;
+}
+
+.carousel-icons .swiper-pagination-bullet{
+  width: 12px;
+  height: 12px;
+}
+
+.carousel-icons .swiper-pagination-bullet-active{
+  background-color: #13203A;
+}
+
+.carousel-desarme .swiper-button-next,
+.carousel-desarme .swiper-button-prev{
+  color: #fff;
+  background-color: rgba(0,0,0,.3);
+}
