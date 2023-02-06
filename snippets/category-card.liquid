@@ -1,0 +1,21 @@
+{% comment %}
+  @collection: received collection object from for loop
+{% endcomment %}
+<li class="{{ class }}">
+  <a href="{{ collection.url }}" class="block relative">
+    <img
+      src="{{ collection.featured_image.src  | img_url: '500x' }}"
+      alt="{{ collection.featured_image.alt }}"
+      width="500"
+      height="{{ 500 | divided_by: collection.featured_image.aspect_ratio | ceil }}"
+      loading="lazy"
+      class="w-full aspect-square object-cover object-center">
+    <div class="absolute bottom-0 left-0 z-[9] py-4 w-full bg-[#13203A] text-white bg-opacity-70 flex flex-col justify-center items-center">
+      <h3 class="text-[20px] lg:text-[28px] text-center mb-4 uppercase font-black">{{ collection.title | escape }}</h3>
+      <div role="button" class="flex uppercase gap-x-2">
+        <span class="font-bold text-[13px] lg:text-[20px]">Ver más</span>
+        {% render 'icon-arrows-white', class: 'w-[14px] h-[21px] lg:w-[37px] lg:h-[24px]' %}
+      </div>
+    </div>  
+  </a>
+</li>

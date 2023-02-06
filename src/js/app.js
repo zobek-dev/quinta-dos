@@ -257,3 +257,101 @@ class DesarmeCarousel extends HTMLElement{
 
 customElements.define('carousel-desarme', DesarmeCarousel);
 
+// Categorias Carousel
+
+class CategoryCarousel extends HTMLElement{
+  constructor(){
+    super();
+    this.carousel = this.querySelector('.categorias-carrousel');
+
+    if(this.carousel){
+      this.swiper = new Swiper(this.carousel, {
+        slidesPerView: 1.3,
+        spaceBetween: 8,
+        breakpoints: {
+          550: {
+            slidesPerView: 2.3,
+            spaceBetween: 8,
+          },
+          1024: {
+            slidesPerView: 2.3,
+            spaceBetween: 16,
+          }
+        }
+      })
+    }
+  }
+}
+
+customElements.define('categorias-carousel', CategoryCarousel);
+
+//Review Carousel
+
+class ReviewsCarousel extends HTMLElement{
+  constructor(){
+    super();
+
+    this.carousel = this.querySelector('.reviews-carousel');
+    this.next = this.querySelector('.btn-next');
+    this.prev = this.querySelector('.btn-prev');
+    this.pagination = this.querySelector('.swiper-pagination')
+
+    if(this.carousel){
+      this.swiper = new Swiper(this.carousel, {
+        modules:[Pagination, Navigation],
+        slidesPerView: 1,
+        spaceBetween: 16,
+        breakpoints: {
+          550: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3
+          }
+        },
+        navigation: {
+          nextEl: this.next,
+          prevEl: this.prev
+        },
+        pagination: {
+          el: this.pagination,
+          clickable: true
+        }
+      })
+    }
+  }
+}
+
+customElements.define('reviews-carousel',ReviewsCarousel);
+
+//Featured ProductCarousel
+
+class FeaturedProductsCarousel extends HTMLElement{
+  constructor(){
+    super();
+    this.carousel = this.querySelector('.featured-carousel');
+
+    if(this.carousel){
+      this.swiper = new Swiper(this.carousel, {
+        slidesPerView:1.2,
+        spaceBetween: 16,
+        breakpoints: {
+          450: {
+            slidesPerView:2.2,
+            spaceBetween: 16,
+          },
+          600:{
+            slidesPerView:3.2,
+            spaceBetween: 16,
+          },
+          1024: {
+            slidesPerView:4,
+            spaceBetween: 16,
+          }
+        }
+      })
+    }
+  }
+}
+
+customElements.define('featured-carousel', FeaturedProductsCarousel);

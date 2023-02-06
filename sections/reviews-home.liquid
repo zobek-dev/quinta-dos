@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <h2 class="uppercase font-black leading-none mt-4 mb-2 lg:mb-4 lg:text-[30px] text-[25px] text-center">Mira lo que dicen
+    <strong class="text-[#FF4100]">Nuestros Clientes</strong>
+  </h2>
+  <reviews-carousel>
+    <div class="reviews-carousel reviews-carousel-{{ section.id }} overflow-hidden relative pt-12 pb-4">
+      <ul class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% render 'review-card', review: block.settings, class: 'swiper-slide' %}
+        {% endfor %}
+      </ul>
+      <div class="swiper-pagination w-max lg:w-full"></div>
+      <div class="flex justify-end gap-x-4 lg:gap-x-8 pt-4">
+        <div class="btn-prev z-[11] cursor-pointer">
+          {% render 'icon-arrow-left', class: 'w-[23px] lg:w-[44px]' %}
+        </div>
+        <div class="btn-next z-[11] cursor-pointer">
+          {% render 'icon-arrow-right', class: 'w-[23px] lg:w-[44px]' %}
+        </div>
+      </div>
+    </div>
+  </reviews-carousel>
+</div>
+
+<style>
+  .reviews-carousel-{{ section.id }} .swiper-pagination-bullet{
+    width: 10px;
+    height: 10px;
+  }
+  .reviews-carousel-{{ section.id }} .swiper-pagination-bullet-active{
+    background-color: #13203A;
+  }
+  .reviews-carousel-{{ section.id }} .swiper-pagination{
+  width: max-content;
+}
+@media(min-width:1024px){
+  .reviews-carousel-{{ section.id }} .swiper-pagination{
+    width:100%;
+  }
+}
+</style>
+{% schema %}
+  {
+    "name": "Reviews Home",
+    "tag": "section",
+    "blocks": [
+      {
+        "type": "review",
+        "name": "Review",
+        "settings": [
+          {
+            "type": "text",
+            "id": "author",
+            "label": "Nombre del autor"
+          }, {
+            "type": "richtext",
+            "id": "content",
+            "label": "Ingresa el contenido de la Evaluación"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Reviews Home",
+        "category": "slides"
+      }
+    ]
+  }
+{% endschema %}

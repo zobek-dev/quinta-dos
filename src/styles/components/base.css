@@ -98,7 +98,7 @@ input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
 
-
+.faq-detail[open] summary svg,
 .filter-group[open] summary svg {
   @apply rotate-180
 }

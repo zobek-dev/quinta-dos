@@ -1,0 +1,14 @@
+{% comment %}
+  @review: Receive the block.settings object from the parent
+  @class: Receive the class string
+{% endcomment %}
+<li class="text-white relative italic flex flex-col justify-between h-[220px] min-h-[220px] pt-12 pb-4 px-4 text-sm lg:text-[18px] {{ class }}" style="background: linear-gradient(116.27deg, #13203A 40.28%, #FF4100 197.2%);box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);border-radius: 10px;">
+  {% render 'icon-quotes', class: 'absolute -top-12 left-4' %}
+  <div>
+    {{ review.content | strip_html }}
+  </div>
+  <div class="flex justify-end gap-x-2 items-center">
+    {% render 'icon-line' %}
+    <span>{{ review.author }}</span>
+  </div>
+</li>

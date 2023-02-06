@@ -1,0 +1,79 @@
+<div class="relative mb-20">
+  <div class="wrapper">
+    <div class="pt-4">
+      {% render 'breadcrumbs' %}
+    </div>
+    <div class="grid lg:grid-cols-2 items-center mb-8 lg:mb-20 gap-4">
+      <div class="">
+        <h1 class="title-rich title-rich mb-4 uppercase font-black leading-none lg:text-[30px] text-[25px]">Compramos tu <br>
+        <strong>vehículo chocado</strong></h1>
+        <p class="mb-4 text-base lg:text-2xl">
+          {{ section.settings.bajada | escape }}
+        </p>
+        <a href="{{ section.settings.link }}" class="btn-rounded btn-primary" target="_blank">
+          Cotiza Aquí
+        </a>
+      </div>
+      <div class="hidden lg:block">
+        <img
+          src="{{ section.settings.image_derecha | img_url: '750x' }}"
+          alt="compramos tu vehículo chocado"
+          width="750"
+          height="{{ 750 | divided_by: section.settings.image_derecha.aspect_ratio | ceil }}"
+          loading="lazy">
+      </div>
+    </div>
+    <div class="lg:pl-[500px]">
+      <h2 class="title-rich title-rich mb-4 uppercase font-black leading-none lg:text-[30px] text-[25px]">¿Cómo lo hacemos <br><strong>en quinta?</strong></h2>
+      <ul>
+        {% for block in section.blocks %}
+          <li class="mb-4">
+            <span class="text-[35px] font-black">0{{ forloop.index }}</span>
+            <div class="text-base lg:text-2xl"> 
+              {{ block.settings.content }}
+            </div>
+          </li>
+        {% endfor %}  
+      </ul>
+      <a href="{{ section.settings.link }}" class="btn-rounded btn-primary mx-auto mt-8" target="_blank">
+        Cotiza Aquí
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Vende tu vehículo",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_derecha",
+        "label": "Inserta la imagen lateral"
+      }, {
+        "type": "text",
+        "id": "bajada",
+        "label": "Inserta el texto de bajada"
+      }, {
+        "type": "url",
+        "id": "link",
+        "label": "Inserta el link del botón"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "step",
+        "name": "step",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Inserta el contenido del parrafo.",
+            "default": "<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem doloribus assumenda fuga laudantium, nihil repellat nisi consectetur sequi qui recusandae.</p>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
