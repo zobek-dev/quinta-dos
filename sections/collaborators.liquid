@@ -1,0 +1,90 @@
+<div class="wrapper py-4 my-8">
+  <h2 class="title-rich uppercase font-black text-[24px] lg:text-[30px] leading-[1.1] mb-8 text-center">
+    {{ section.settings.title }}
+  </h2>  
+  <div x-data="{
+    skip:1,
+    prev(){
+      this.to((current, offset) => current - (offset * this.skip));
+    },
+    next(){
+      this.to((current, offset) => current + (offset * this.skip));
+    },
+    to(strategy){
+      let slider = this.$refs.colaborator_slider;
+      let current = slider.scrollLeft;
+      let offset = slider.firstElementChild.getBoundingClientRect().width;
+      slider.scrollTo({ left: strategy(current, offset), behavior:'smooth' });
+    },
+    focusableWhenVisible:{
+      'x-intersect:enter'(){
+        this.$el.removeAttribute('tabindex');
+      },
+      'x-intesect:leave'(){
+        this.$el.setAttribute('tabindex', '-1');
+      },
+    }
+  }">
+    <div class="relative mb-12">
+      <ul class="flex overflow-x-scroll snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:no-scrollbar" x-ref="colaborator_slider">
+      {% for block in section.blocks %}
+        {% render 'colaborator-card', colaborator: block.settings, class: 'snap-start flex-shrink-0' %}  
+      {% endfor %}  
+      </ul>
+      <button class="block md:hidden absolute top-1/2 left-0 -translate-y-1/2 bg-gray-400/20 text-white" @click="prev()">
+      {% render 'icon-caret' , class: 'w-12 h-12 rotate-90' %}
+      <span class="sr-only">Anterior</span>
+      </button>
+      <button class="block md:hidden absolute top-1/2 right-0 -translate-y-1/2 bg-gray-400/20 text-white" @click="next()">
+        {% render 'icon-caret' , class: 'w-12 h-12 -rotate-90' %}
+      <span class="sr-only">Siguiente</span>
+    </button>
+    </div>  
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Colaboradores",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Inserta el título de la sección",
+        "default": "<p>Conoce a <strong>nuestro equipo</strong></p>" 
+      }
+    ],
+    "blocks":[
+      {
+        "type": "colaborador",
+        "name": "colaborator",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "avatar",
+            "label": "Ingresa el imagen para el avatar del colaborador"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Nombre del colaborador",
+            "default": "lorem ipsum"
+          },
+          {
+            "type": "text",
+            "id": "role",
+            "label": "Rol del colaborador",
+            "default": "lorem ipsum dolor"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Colaboradores"
+      }
+    ]
+  }
+{% endschema %}
+

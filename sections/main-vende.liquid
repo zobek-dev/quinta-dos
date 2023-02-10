@@ -1,4 +1,4 @@
-<div class="relative mb-20">
+<div class="relative mb-20 bg-section">
   <div class="wrapper">
     <div class="pt-4">
       {% render 'breadcrumbs' %}
@@ -14,7 +14,7 @@
           Cotiza Aquí
         </a>
       </div>
-      <div class="hidden lg:block">
+      <div class="row-start-1 row-end-3 lg:row-start-auto lg:row-end-auto">
         <img
           src="{{ section.settings.image_derecha | img_url: '750x' }}"
           alt="compramos tu vehículo chocado"
@@ -42,6 +42,14 @@
   </div>
 </div>
 
+<style>
+  .bg-section{
+    background: url({{ section.settings.image_one | img_url: master }});
+    background-repeat: no-repeat;
+    background-position: bottom left;
+  }
+</style>
+ 
 {% schema %}
   {
     "name": "Vende tu vehículo",
@@ -59,6 +67,10 @@
         "type": "url",
         "id": "link",
         "label": "Inserta el link del botón"
+      }, {
+        "type": "image_picker",
+        "id": "image_one",
+        "label": "Agregar la imagen 1"
       }
     ],
     "blocks": [

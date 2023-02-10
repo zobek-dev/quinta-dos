@@ -1,0 +1,28 @@
+<div class="py-8">
+  <img
+    src="{{ section.settings.image | img_url: 'master' }}"
+    alt="{{ section.settings.image.alt }}"
+    width="{{ section.settings.image.width }}"
+    height="{{ section.settings.image.width | divide_by: section.settings.image.aspect_ratio | ceil }}"
+    loading="lazy"
+    >
+</div>
+
+{% schema %}
+  {
+    "name": "Imagen Full",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Inserta imagen completa."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Imagen Full"
+      }
+    ]
+  }
+{% endschema %}

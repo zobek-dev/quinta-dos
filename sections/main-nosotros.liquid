@@ -1,0 +1,84 @@
+<div class="wrapper">
+  <div class="pt-4 mb-4">
+    {% render 'breadcrumbs' %}
+  </div>
+  <div class="grid lg:grid-cols-2 gap-4 items-center mb-8">
+    <div>
+      <h1 class="text-center lg:text-left title-rich uppercase font-black text-[24px] lg:text-[30px] leading-[1.1] my-4">{{ section.settings.title_one }}</h1>
+      <div>
+        {{ section.settings.content_one }}
+      </div>
+    </div>
+    <div class="row-start-1 row-end-2 lg:row-start-auto lg:row-end-auto">
+      <img
+        src="{{ section.settings.image_one | img_url: '800x' }}"
+        alt="{{ section.settings.image_one.alt | escape }}"
+        loading="lazy"
+        width="800"
+        height="{{ 800 | divided_by: section.settings.image_one.aspect_ratio }}">
+    </div>
+  </div>
+  <div class="w-full max-w-[750px] mx-auto mb-8">
+    <video width="100%" height="auto" autoplay loop muted playsinline>
+      <source src="{{ section.settings.video_link }}" type="video/mp4">
+    </video>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-4 items-center mb-8">
+    <div class="row-start-2 row-end-3 lg:row-start-auto lg:row-end-auto">
+      <img
+        src="{{ section.settings.image_two | img_url: '800x' }}"
+        alt="{{ section.settings.image_two.alt | escape }}"
+        loading="lazy"
+        width="800"
+        height="{{ 800 | divided_by: section.settings.image_alt.aspect_ratio }}">
+    </div>
+    <div>
+      <h2 class="text-center lg:text-left title-rich uppercase font-black text-[24px] lg:text-[30px] leading-[1.1] mb-4">{{ section.settings.title_two }}</h2>
+      <div class="mb-4">
+        {{ section.settings.content_two }}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Nosotros",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title_one",
+        "label": "Inserta un primer titulo",
+        "default": "<p>Somos Quinta <br><strong>Desarmaduría</strong></p>"
+      }, {
+        "type": "richtext",
+        "id": "content_one",
+        "label": "Inserta el primer cotenido",
+        "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, nobis accusantium! Enim dolore a officiis earum et itaque quasi eos dignissimos similique, rerum doloremque, fugit libero eveniet fugiat necessitatibus temporibus.</p>"
+      }, {
+        "type": "image_picker",
+        "id": "image_one",
+        "label": "Inserta la imagen"
+      }, {
+        "type": "text",
+        "id": "video_link",
+        "label": "Inserta el link del video despues de subir al CDN de Shopify",
+        "default": "https://cdn.shopify.com/videos/c/o/v/b5c6f2739d254767b8a723068daf055c.mp4"
+      },
+      {
+        "type": "richtext",
+        "id": "title_two",
+        "label": "Inserta un segundo titulo",
+        "default": "<p>Nuestra <strong>Historia</strong></p>"
+      }, {
+        "type": "richtext",
+        "id": "content_two",
+        "label": "Inserta el segundo cotenido",
+        "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, nobis accusantium! Enim dolore a officiis earum et itaque quasi eos dignissimos similique, rerum doloremque, fugit libero eveniet fugiat necessitatibus temporibus.</p>"
+      },{
+        "type": "image_picker",
+        "id": "image_two",
+        "label": "Inserta la imagen"
+      }
+    ]
+  }
+{% endschema %}
