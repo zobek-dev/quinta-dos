@@ -8,7 +8,7 @@
   endif
 -%}
 
-<li class="{{ class }} relative border border-[#13203A] p-4">
+<li class="{{ class }} relative border border-[#13203A] p-2">
   <div class="relative">
     {% if on_sale %}
       {% assign porcentage = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
@@ -69,3 +69,4 @@
     </a>
   </div>
 </li> 
+

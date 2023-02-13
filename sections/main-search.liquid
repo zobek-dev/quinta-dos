@@ -322,7 +322,7 @@
         <div class="col-span-1 lg:col-span-3 pt-8 pb-8 lg:pb-12 h-max relative" id="ProductGrid">
           {% render 'loader' %}
           {% paginate search.results by 12 %}
-            <ul class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8 lg:mb-12">
+            <ul class="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 mb-8 lg:mb-12">
               {% for product in search.results %}
                 {% liquid
                   assign desarme = false

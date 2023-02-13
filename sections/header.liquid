@@ -158,11 +158,11 @@
                     @mouseover="handleOpen"
                     @mouseout="handleOpen"
                     >
-                      <summary class="flex items-center gap-x-1 group group-hover:text-[#FF4100] {% if link.current %}text-[#FF4100]{% endif %}">
-                        <a href="{{ link.url }}" class="block group-hover:underline group-hover:text-[#FF4100] hover:underline-offset-2 whitespace-nowrap font-semibold text-sm leading-none {% if link.current %}text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                      <summary class="flex items-center gap-x-1 group {% if link.current %}text-[#FF4100]{% endif %}">
+                        <a href="{{ link.url }}" class="block group-hover:underline hover:underline-offset-2 whitespace-nowrap font-semibold text-sm leading-none {% if link.current %}text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
                           {{ link.title | escape }}
                         </a>
-                        <span x-ref="caret">{% render 'icon-caret', class: 'w-3 group-hover:text-[#FF4100]' %}</span>
+                      <span x-ref="caret">{% render 'icon-caret', class: 'w-3' %}</span>
                       </summary>
                       <div class="w-full absolute top-full left-0 z-[999] bg-white py-4 px-4" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
                         <div class="wrapper">
@@ -181,7 +181,7 @@
                     </details>
                   </div>         
                   {% else %}
-                    <a href="{{ link.url }}" class="block hover:underline hover:text-[#FF4100] hover:underline-offset-2 font-semibold whitespace-nowrap text-sm py-6 leading-none {% if forloop.last %}pl-4{% else %}px-4{% endif %}{% if link.current %} text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                    <a href="{{ link.url }}" class="block hover:underline hover:underline-offset-2 font-semibold whitespace-nowrap text-sm py-6 leading-none {% if forloop.last %}pl-4{% else %}px-4{% endif %}{% if link.current %} text-[#FF4100]{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
                       {{ link.title | escape }}
                     </a>  
                   {% endif %}
