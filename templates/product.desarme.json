@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-desarme",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations"
+    }
+  },
+  "order": [
+    "main",
+    "recommendations"
+  ]
+}

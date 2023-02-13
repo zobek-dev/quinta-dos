@@ -1,18 +1,51 @@
-<div class="bg-cover bg-no-repeat bg-center  relative hero overflow-hidden h-[400px] lg:h-[800px]" style="background: url({{ section.settings.image_desktop | img_url: 'master' }}), linear-gradient(#13203A, #13203A); background-repeat: no-repeat; background-position: top right; background-size: cover;">
-  <div class="bg-[rgba(19,32,58,0.4)] w-full">
-    <div class="wrapper py-32 lg:py-64">
+<div class="bg-[#132034] relative hero overflow-hidden h-[400px] md:h-[800px]">
+  <div class="z-[4] absolute top-0 left-0 right-0 bottom-0 bg-[rgba(19,32,58,0.4)] w-full">
+    <div class="wrapper py-32 md:py-64 relative">
       <h1 class="text-white uppercase leading-[1.1] font-black text-[25px] lg:text-[60px] max-w-[750px] title-rich mb-4">
         {{ section.settings.title }}
       </h1>
-      <div class="text-white max-w-[750] text-sm lg:text-[24px] mb-4 leading-[1.1]">
+      <div class="text-white max-w-[750] text-sm md:text-[24px] mb-4 leading-[1.1]">
         {{ section.settings.content }}
       </div>
-      <a href="{{ section.settings.link }}" class="btn-rounded btn-primary text-sm lg:text-xl">
+      <a href="{{ section.settings.link }}" class="btn-rounded btn-primary text-sm md:text-xl">
         {{ section.settings.link_text | escape }}
       </a>
     </div>
   </div>
 </div>
+
+<style>
+  .hero{
+    background: url({{ section.settings.image_mobile | img_url: 'master' }}); 
+    background-repeat: no-repeat; 
+    background-position: top right; 
+    background-size: cover;
+  }
+
+  @media(min-width: 768px){
+    .hero{
+      background:linear-gradient(#13203A, #13203A);
+      background-size: cover;
+      background-repeat: no-repeat; 
+      background-position: top left;
+      
+    }
+    .hero::after{
+      content: "";
+      background: url({{ section.settings.image_desktop | img_url: 'master' }});
+      position: absolute;
+      width: 60%;
+      height: 100%;
+      top:0; 
+      right: 0;
+      background-size:cover;
+      background-position: center; 
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+  }
+
+</style>
 {% schema %}
   {
     "name": "Hero",

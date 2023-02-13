@@ -8,7 +8,7 @@
   endif
 -%}
 
-<li class="{{ class }} relative">
+<li class="{{ class }} relative border border-[#13203A] p-4">
   <div class="relative">
     {% if on_sale %}
       {% assign porcentage = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
@@ -40,7 +40,7 @@
   {% endunless %}
   <div class="pb-2">
     <a href="{{ product.url }}">
-      <h3 class="uppercase text-[#FF4100] font-black text-[18px] text-center lg:text-[22px] line-clamp-2 leading-none my-2">{{ product.title | escape }}</h3>
+      <h3 class="uppercase text-[#00C13E] font-black text-[18px] text-center lg:text-[22px] line-clamp-2 leading-none my-2">{{ product.title | escape }}</h3>
       <p class="text-[13px] lg:text-[15px] text-semibold leading-none mb-2 line-clamp-2">{{ product.metafields.custom.caracter_sticas.value | escape }}</p>
       {% comment %} <div class="flex items-center gap-x-2">
         {% if on_sale %}
@@ -55,24 +55,11 @@
       </div> {% endcomment %}
     </a>
   </div>
-  <form
-    action="{{ routes.cart_add_url }}"
-    x-ref="product_form"
-    id="ProductCard-Form-{{ product.selected_or_first_available_variant.id }}">
-    <input
-      type="hidden"
-      name="id"
-      value="{{ product.selected_or_first_available_variant.id }}">
-    <input
-      type="hidden"
-      name="quantity"
-      value="1">
-  </form>
   <div class="flex items-center">
     <a
       href="#"
       role="button"
-      class="btn-card btn-primary"
+      class="btn-card btn-secondary"
       target="_blank"
     >
       Cotiza Aquí

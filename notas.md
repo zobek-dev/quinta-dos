@@ -12,3 +12,10 @@ Colores
 4. logo footer cambiar - direcciones footer en mayusculas
 5. carro lateral cambiar forma de cantidades
 6. agregar borde a las tarjetas de producto
+
+## Itinerario de reunion
+
+1. Revisar el template
+2. Subida de productos (revisar imagenes)
+3. Pasos a seguir
+4. Intregraciones

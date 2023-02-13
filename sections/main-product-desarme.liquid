@@ -1,0 +1,241 @@
+{%- liquid
+  assign on_sale = false
+  assign month = 30 | times: 24 | times: 60 | times: 60
+  assign date_created = product.created_at | date: "%Y-%m-%d"
+  assign dead_line = "now" | date: "%s" | minus: month | date: "%Y-%m-%d"
+  if product.compare_at_price_max > product.price
+    assign on_sale = true
+  endif
+-%}
+
+<div class="wrapper">
+  <div class="block mt-4">
+    {% render 'breadcrumbs' %}
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+    <div class="col-span-1 lg:top-28 lg:sticky lg:self-start">
+      <product-carousel class="flex flex-col gap-4">
+        <div class="product-gallery product-gallery__{{ section.id }} overflow-hidden flex-1 border border-[#13203A]" data-count="{{ product.images.size }}">
+          <ul class="swiper-wrapper flex items-center">
+            {% for image in product.images %}
+              <li class="swiper-slide overflow-hidden flex justify-center items-center">
+                <a href="{{ image.src | img_url: '1500x' }}" class="fslightbox" data-fslightbox="group-desktop-product">
+                  <img 
+                  src="{{ image.src | img_url: '600x' }}"  
+                  alt="{{ image.alt }}" 
+                  width="600"
+                  height="{{ 600 | divided_by: image.aspect_ratio | ceil }}"
+                  class="object-contain object-center"
+                  loading="lazy">
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="product-thumbnail product-thumbnail__{{ section.id }} overflow-hidden">
+          <ul class="swiper-wrapper">
+            {% for image in product.images %}
+              <li class="swiper-slide border border-[#13203A] overflow-hidden">
+                <img 
+                src="{{ image.src | img_url: '150x' }}" 
+                alt="{{ image.alt }}" 
+                width="150"
+                height="{{ 150 | divided_by: image.aspect_ratio | ceil }}"
+                class="aspect-square object-center object-cover"
+                loading="lazy"
+                >
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </product-carousel>
+    </div>
+    <div class="right">
+      <h1 class="uppercase font-black leading-[1.1] text-[26px] lg:text-[35px] lg:pt-4">{{ product.title | escape }}</h1>
+      <h2 class="uppercase text-base lg:text-xl mb-4">{{ product.metafields.custom.caracter_sticas.value }}</h2>
+      {% if product.available %}
+      <p class="uppercase leading-[1.2]">Stock disponible: {{ product.selected_or_first_available_variant.inventory_quantity }}</p>
+      {% else %}
+      <p class="uppercase">Agotado</p>  
+      {% endif %}
+      <div class="flex gap-x-2 items-center mb-4">
+        {% if on_sale %}
+          <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
+          <span class="text-[#00C13E] uppercase font-black text-[26px] lg:text-[35px]">{{ product.price | money }}</span>
+          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+          <s class="italic text-sm lg:text-base decoration-[rgba(19,32,58,.5)] text-[rgba(19,32,58,.5)]">{{ product.compare_at_price_max | money }}</s>
+        {% else %}
+          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+          <span class="text-[#00C13E] uppercase font-black text-[26px] lg:text-[35px]">{{ product.price | money }}</span>
+        {% endif %}
+      </div>
+      
+      <div class="flex gap-x-2 items-center relative mb-8" 
+      >    
+        <a href="#" class="btn-rounded text-white bg-[#00C13E] border border-[#00C13E] hover:bg-transparent hover:text-[#00C13E] text-[13px] md:text-[15px] px-4 md:px-8">
+          Cotiza aquí
+        </a>
+      </div>
+      <div class="description mb-8">
+        <h2 class="uppercase font-bold my-4 text-xl">Descripción</h2>
+        <div class="prose">
+          {{ product.description }}
+        </div>
+      </div>
+      <div class="mb-8">
+        <h2 class="uppercase font-bold text-xl py-4 border-b border-dashed border-[#13203A]">Específicaciones</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
+                <span class="uppercase font-bold text-base py-4">
+                  Año
+                </span>
+              </td>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+                <span class="text-[#374151]">
+                  {{ product.metafields.custom.year.value | escape }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
+                <span class="uppercase font-bold text-base py-4">
+                  Modelo y marca
+                </span>
+              </td>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+                <span class="text-[#374151]">
+                  {{ product.metafields.custom.modelo.value | escape }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
+                <span class="uppercase font-bold text-base py-4">
+                  Vehículo
+                </span>
+              </td>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+                <span class="text-[#374151]">
+                  {{ product.metafields.custom.vehiculo.value | escape }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
+                <span class="uppercase font-bold text-base py-4">
+                  Específicaciones
+                </span>
+              </td>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+                <span class="text-[#374151]">
+                  {{ product.metafields.custom.especificaciones.value | escape }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
+                <span class="uppercase font-bold text-base py-4">
+                  Compatibilidad
+                </span>
+              </td>
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+                <span class="text-[#374151]">
+                  {{ product.metafields.custom.compatibilidad.value | escape }}
+                </span>
+              </td>
+            </tr>
+          </tbody>  
+        </table>
+        <table>
+          <tbody>
+            <tr>
+              <td class="w-1/2 lg:w-1/3 py-4 border-b border-dashed border-[#13203A]">
+                <span class="uppercase font-bold text-base max-content">
+                  ¿Quieres más información?
+                </span>
+              </td>
+              <td class="w-1/2 lg:w-2/3 pl-4 py-4 border-b border-dashed border-[#13203A]">
+                <a href="{{ section.settings.contact_link }}" class="text-xs py-2 px-4 lg:px-8 text-center bg-[#ff4100] text-white uppercase whitespace-nowrap italic font-black w-max leading-none rounded-2xl" target="_blank">
+                Contactanos Aquí
+                </a>
+              </td>
+            </tr>  
+          </tbody>       
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %}
+  SEO
+{% endcomment %}
+
+{%- liquid
+if product.selected_or_first_available_variant.featured_media
+  assign seo_media = product.selected_or_first_available_variant.featured_media
+else
+  assign seo_media = product.featured_media
+endif
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ request.origin | append: product.url | json }},
+  {% if seo_media -%}
+    "image": [
+      {{ seo_media | image_url: width: 1920 | prepend: "https:" | json }}
+    ],
+  {%- endif %}
+  "description": {{ product.description | strip_html | json }},
+  {% if product.selected_or_first_available_variant.sku != blank -%}
+    "sku": {{ product.selected_or_first_available_variant.sku | json }},
+  {%- endif %}
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": [
+    {%- for variant in product.variants -%}
+      {
+        "@type" : "Offer",
+        {%- if variant.sku != blank -%}
+          "sku": {{ variant.sku | json }},
+        {%- endif -%}
+        {%- if variant.barcode.size == 12 -%}
+          "gtin12": {{ variant.barcode }},
+        {%- endif -%}
+        {%- if variant.barcode.size == 13 -%}
+          "gtin13": {{ variant.barcode }},
+        {%- endif -%}
+        {%- if variant.barcode.size == 14 -%}
+          "gtin14": {{ variant.barcode }},
+        {%- endif -%}
+        "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+        "price" : {{ variant.price | divided_by: 100.00 | json }},
+        "priceCurrency" : {{ cart.currency.iso_code | json }},
+        "url" : {{ request.origin | append: variant.url | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-product.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label":"Link de contacto"
+    }
+  ]
+}
+{% endschema %}

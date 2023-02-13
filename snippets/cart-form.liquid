@@ -151,7 +151,7 @@
                   <div class="flex flex-wrap items-center gap-4 ">
                     <div 
                     x-data="{ quantity: {{ item.quantity }}, loading: false}"
-                    class="flex items-center group border-[0.5px] border-[#13203A] text-[#13203A] relative"
+                    class="overflow-hidden border border-[#13203A] rounded-2xl w-max flex items-center relative"
                     >
                       {% render 'loader' %}
                       <button
@@ -181,7 +181,7 @@
                         aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                         id="Drawer-quantity-{{ item.index | plus: 1 }}"
                         data-index="{{ item.index | plus: 1 }}"
-                        class="w-[50px] py-3 text-center text-[#13203A] text-xs md:text-sm"
+                        class="w-[50px] py-2 text-center text-[#13203A] text-xs md:text-sm border-l border-r border-[#13203A]"
                         x-ref="input"
                       >
                       <button
