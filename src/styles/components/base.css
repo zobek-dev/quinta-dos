@@ -125,7 +125,9 @@ input[type="checkbox"]:checked::before {
 }
 
 .carousel-desarme .swiper-button-next,
-.carousel-desarme .swiper-button-prev{
+.carousel-desarme .swiper-button-prev,
+.product-gallery .swiper-button-next,
+.product-gallery .swiper-button-prev{
   color: #fff;
   background-color: rgba(0,0,0,.3);
 }

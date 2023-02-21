@@ -5,7 +5,7 @@
   <div class="grid lg:grid-cols-2 gap-4 items-center mb-8">
     <div>
       <h1 class="text-center lg:text-left title-rich uppercase font-black text-[24px] lg:text-[30px] leading-[1.1] my-4">{{ section.settings.title_one }}</h1>
-      <div>
+      <div class="prose">
         {{ section.settings.content_one }}
       </div>
     </div>
@@ -15,6 +15,7 @@
         alt="{{ section.settings.image_one.alt | escape }}"
         loading="lazy"
         width="800"
+        class="mx-auto"
         height="{{ 800 | divided_by: section.settings.image_one.aspect_ratio }}">
     </div>
   </div>
@@ -30,11 +31,12 @@
         alt="{{ section.settings.image_two.alt | escape }}"
         loading="lazy"
         width="800"
+        class="mx-auto"
         height="{{ 800 | divided_by: section.settings.image_alt.aspect_ratio }}">
     </div>
     <div>
       <h2 class="text-center lg:text-left title-rich uppercase font-black text-[24px] lg:text-[30px] leading-[1.1] mb-4">{{ section.settings.title_two }}</h2>
-      <div class="mb-4">
+      <div class="mb-4 prose">
         {{ section.settings.content_two }}
       </div>
     </div>

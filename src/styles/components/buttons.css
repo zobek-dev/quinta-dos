@@ -19,5 +19,5 @@
 }
 
 .btn-card{
-  @apply w-[50%] uppercase block text-center italic py-1 text-[12px] lg:text-[18px] font-black transition-colors duration-200 ease-in-out;
+  @apply w-[50%] uppercase block text-center italic py-2 text-[12px] lg:text-[18px] font-black transition-colors duration-200 ease-in-out;
 }

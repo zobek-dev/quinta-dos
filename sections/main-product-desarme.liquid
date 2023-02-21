@@ -19,56 +19,26 @@
           <ul class="swiper-wrapper flex items-center">
             {% for image in product.images %}
               <li class="swiper-slide overflow-hidden flex justify-center items-center">
-                <a href="{{ image.src | img_url: '1500x' }}" class="fslightbox" data-fslightbox="group-desktop-product">
+                <a href="{{ image.src | img_url: '1500x' }}" class="fslightbox cursor-zoom-in" data-fslightbox="group-desktop-product">
                   <img 
-                  src="{{ image.src | img_url: '600x' }}"  
+                  src="{{ image.src | img_url: '750x' }}"  
                   alt="{{ image.alt }}" 
-                  width="600"
-                  height="{{ 600 | divided_by: image.aspect_ratio | ceil }}"
-                  class="object-contain object-center"
-                  loading="lazy">
+                  width="750"
+                  height="{{ 750 | divided_by: image.aspect_ratio | ceil }}"
+                  class="object-cover object-center"
+                  loading="lazy"> 
                 </a>
               </li>
             {% endfor %}
           </ul>
-        </div>
-        <div class="product-thumbnail product-thumbnail__{{ section.id }} overflow-hidden">
-          <ul class="swiper-wrapper">
-            {% for image in product.images %}
-              <li class="swiper-slide border border-[#13203A] overflow-hidden">
-                <img 
-                src="{{ image.src | img_url: '150x' }}" 
-                alt="{{ image.alt }}" 
-                width="150"
-                height="{{ 150 | divided_by: image.aspect_ratio | ceil }}"
-                class="aspect-square object-center object-cover"
-                loading="lazy"
-                >
-              </li>
-            {% endfor %}
-          </ul>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
       </product-carousel>
     </div>
     <div class="right">
       <h1 class="uppercase font-black leading-[1.1] text-[26px] lg:text-[35px] lg:pt-4">{{ product.title | escape }}</h1>
       <h2 class="uppercase text-base lg:text-xl mb-4">{{ product.metafields.custom.caracter_sticas.value }}</h2>
-      {% if product.available %}
-      <p class="uppercase leading-[1.2]">Stock disponible: {{ product.selected_or_first_available_variant.inventory_quantity }}</p>
-      {% else %}
-      <p class="uppercase">Agotado</p>  
-      {% endif %}
-      <div class="flex gap-x-2 items-center mb-4">
-        {% if on_sale %}
-          <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
-          <span class="text-[#00C13E] uppercase font-black text-[26px] lg:text-[35px]">{{ product.price | money }}</span>
-          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
-          <s class="italic text-sm lg:text-base decoration-[rgba(19,32,58,.5)] text-[rgba(19,32,58,.5)]">{{ product.compare_at_price_max | money }}</s>
-        {% else %}
-          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
-          <span class="text-[#00C13E] uppercase font-black text-[26px] lg:text-[35px]">{{ product.price | money }}</span>
-        {% endif %}
-      </div>
       
       <div class="flex gap-x-2 items-center relative mb-8" 
       >    
@@ -76,15 +46,18 @@
           Cotiza aquí
         </a>
       </div>
+      {% if product.description != blank %}
       <div class="description mb-8">
         <h2 class="uppercase font-bold my-4 text-xl">Descripción</h2>
         <div class="prose">
           {{ product.description }}
         </div>
       </div>
+      {% endif %}
+     
       <div class="mb-8">
         <h2 class="uppercase font-bold text-xl py-4 border-b border-dashed border-[#13203A]">Específicaciones</h2>
-        <table>
+        <table class="w-full">
           <tbody>
             <tr>
               <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
@@ -92,7 +65,7 @@
                   Año
                 </span>
               </td>
-              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2 text-right">
                 <span class="text-[#374151]">
                   {{ product.metafields.custom.year.value | escape }}
                 </span>
@@ -104,7 +77,7 @@
                   Modelo y marca
                 </span>
               </td>
-              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2 text-right">
                 <span class="text-[#374151]">
                   {{ product.metafields.custom.modelo.value | escape }}
                 </span>
@@ -113,42 +86,41 @@
             <tr>
               <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
                 <span class="uppercase font-bold text-base py-4">
-                  Vehículo
+                  Tipo de Combustible
                 </span>
               </td>
-              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2 text-right">
                 <span class="text-[#374151]">
-                  {{ product.metafields.custom.vehiculo.value | escape }}
+                  {{ product.metafields.custom.combustible.value | escape }}
                 </span>
               </td>
             </tr>
             <tr>
               <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
                 <span class="uppercase font-bold text-base py-4">
-                  Específicaciones
+                  Transmisión
                 </span>
               </td>
-              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2 text-right">
                 <span class="text-[#374151]">
-                  {{ product.metafields.custom.especificaciones.value | escape }}
+                  {{ product.metafields.custom.transmision.value | escape }}
                 </span>
               </td>
-            </tr>
-            <tr>
+              <tr>
               <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
                 <span class="uppercase font-bold text-base py-4">
-                  Compatibilidad
+                  Cilindrada
                 </span>
               </td>
-              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2">
+              <td class="w-1/2 py-4 border-b border-dashed border-[#13203A] pl-2 text-right">
                 <span class="text-[#374151]">
-                  {{ product.metafields.custom.compatibilidad.value | escape }}
+                  {{ product.metafields.custom.cilindrada.value | escape }}
                 </span>
               </td>
             </tr>
           </tbody>  
         </table>
-        <table>
+        <table class="w-full">
           <tbody>
             <tr>
               <td class="w-1/2 lg:w-1/3 py-4 border-b border-dashed border-[#13203A]">
@@ -173,7 +145,7 @@
   SEO
 {% endcomment %}
 
-{%- liquid
+{% comment %} {%- liquid
 if product.selected_or_first_available_variant.featured_media
   assign seo_media = product.selected_or_first_available_variant.featured_media
 else
@@ -224,7 +196,7 @@ endif
     {%- endfor -%}
   ]
 }
-</script>
+</script> {% endcomment %}
 
 {% schema %}
 {

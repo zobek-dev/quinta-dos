@@ -5,13 +5,13 @@
     </div>
     <div class="grid lg:grid-cols-2 items-center mb-8 lg:mb-20 gap-4">
       <div class="">
-        <h1 class="title-rich title-rich mb-4 uppercase font-black leading-none lg:text-[30px] text-[25px]">Compramos tu <br>
-        <strong>vehículo chocado</strong></h1>
-        <p class="mb-4 text-base lg:text-2xl">
+        <h1 class="title-rich title-rich mb-4 lg:mb-8 uppercase font-black leading-none lg:text-[30px] text-[25px]">Compramos <strong>tu<br>
+        vehículo</strong> chocado</h1>
+        <p class="mb-8 text-base lg:text-2xl">
           {{ section.settings.bajada | escape }}
         </p>
         <a href="{{ section.settings.link }}" class="btn-rounded btn-primary" target="_blank">
-          Cotiza Aquí
+          Contáctanos
         </a>
       </div>
       <div class="row-start-1 row-end-3 lg:row-start-auto lg:row-end-auto">
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="lg:pl-[500px]">
-      <h2 class="title-rich title-rich mb-4 uppercase font-black leading-none lg:text-[30px] text-[25px]">¿Cómo lo hacemos <br><strong>en quinta?</strong></h2>
+      <h2 class="title-rich title-rich my-4 lg:my-8 uppercase font-black leading-none lg:text-[30px] text-[25px]">¿Cómo lo hacemos <br><strong>en quinta?</strong></h2>
       <ul>
         {% for block in section.blocks %}
           <li class="mb-4">
@@ -36,7 +36,7 @@
         {% endfor %}  
       </ul>
       <a href="{{ section.settings.link }}" class="btn-rounded btn-primary mx-auto mt-8" target="_blank">
-        Cotiza Aquí
+        Contáctanos
       </a>
     </div>
   </div>

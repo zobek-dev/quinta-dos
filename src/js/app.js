@@ -1,5 +1,5 @@
 import Alpine from 'alpinejs';
-import Swiper,{Navigation, Pagination, Controller} from 'swiper';
+import Swiper,{Navigation, Pagination} from 'swiper';
 import fslightbox from 'fslightbox';
 
 window.Alpine = Alpine;
@@ -11,8 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
     fslightbox.initialize({
       selector: '.fslightbox'
     })
+    fslightbox.props.type = "image";
   }
-})
+});
 
 /*
  * Shopify Common JS
@@ -158,37 +159,20 @@ customElements.define('marcas-carousel', MarcasCarousel);
 class ProductCarousel extends HTMLElement{
   constructor(){
     super();
-    this.thumbnail = this.querySelector('.product-thumbnail');
     this.gallery = this.querySelector('.product-gallery');
-    this.count = Number(this.gallery.dataset.count);
-
-    this.thumb = new Swiper(this.thumbnail, {
-      modules: [Controller],
-      spaceBetween: 16,
-      slidesPerView: 3,
-      loop: true,
-      breakpoints: {
-        600:{
-          slidesPerView: 5
-        }
-      },
-      centeredSlides: true,
-      loopedSlides: this.count,
-      slideToClickedSlide: true
-    })
+    this.next = this.querySelector('.swiper-button-next');
+    this.prev = this.querySelector('.swiper-button-prev');
 
     this.gall = new Swiper(this.gallery, {
-      modules:[Controller],
+      modules:[Navigation],
       slidesPerView: 1,
-      loop: true,
       autoHeight: true,
-      centeredSlides: true,
-      loopedSlides: this.count
+      loop: true,
+      navigation: {
+        nextEl: this.next,
+        prevEl: this.prev 
+      }
     })
-
-
-    this.gall.controller.control = this.thumb;
-    this.thumb.controller.control = this.gall;
   }
 }
 
