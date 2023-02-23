@@ -26,7 +26,7 @@
     }
   }">
     <div class="relative mb-12">
-      <ul class="flex overflow-x-scroll md:overflow-hidden snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:no-scrollbar" x-ref="colaborator_slider">
+      <ul class="flex overflow-x-scroll md:overflow-hidden snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 md:no-scrollbar" x-ref="colaborator_slider">
       {% for block in section.blocks %}
         {% render 'colaborator-card', colaborator: block.settings, class: 'snap-start flex-shrink-0' %}  
       {% endfor %}  

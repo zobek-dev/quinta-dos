@@ -19,3 +19,15 @@ Colores
 2. Subida de productos (revisar imagenes)
 3. Pasos a seguir
 4. Intregraciones
+
+
+
+## LINK auto chocados
+https://wa.me/56953487379/?text=Hola%2C%20deseo%20vender%20mi%20auto%20chocado
+
+## LINK Cotiza aquí
+https://wa.me/56986622371/?text=Hola%2C%20deseo%20cotizar%20lo%20siguiente
+
+## CONTACTO FOOTER
+https://wa.me/56956084474/?text=Hola%2C%20deseo%20contactarme%20con%20ustedes%20por
+https://wa.me/56986622371/?text=Hola%2C%20deseo%20contactarme%20con%20ustedes%20por

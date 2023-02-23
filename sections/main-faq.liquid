@@ -4,22 +4,15 @@
   </div>
   <div class="max-w-[971px] mx-auto">
     <h1 class="text-center title-rich my-8 uppercase font-black leading-none lg:text-[30px] text-[25px]">Preguntas <strong>Frecuentes</strong></h1>
-    <ul>
+    <ul tabindex="-1">
       {% for block in section.blocks %}
-        {% liquid 
-          assign is_even = false
-          assign modul = forloop.index | modulo: 2
-          if modul == 0
-            assign is_even = true
-          endif
-        %}
         <li>
           <details class="py-6 border-b border-dashed border-[#13203A] faq-detail lg:px-4">
-            <summary class="flex justify-between items-center {% if is_even == false %}text-[#13203A]{% else %}text-[#ff4100]{% endif %}">
-              <span class="font-black text-xl lg:text-[25px] uppercase">{{ block.settings.title | escape }}</span>
-              {% render 'icon-caret', class: 'w-6' %}
+            <summary class="flex justify-between items-center text-[#13203A]">
+              <span class="font-black text-base lg:text-xl uppercase">{{ block.settings.title | escape }}</span>
+              {% render 'icon-caret', class: 'w-4' %}
             </summary>
-            <div class="text-base pt-4">
+            <div class="text-base pt-4 prose">
               {{ block.settings.content }}
             </div>
           </details>

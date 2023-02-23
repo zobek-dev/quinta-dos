@@ -1,7 +1,7 @@
 <div class="bg-[#FF4100] text-white py-2">
   <div class="wrapper">
     <div class="flex justify-center lg:justify-between items-center">
-      <a href="{{ section.settings.link }}" class="uppercase text-center font-poppins font-bold text-xs lg:text-sm">
+      <a href="{{ section.settings.link }}" class="uppercase text-center font-poppins font-bold text-[10px]  lg:text-sm">
         {{ section.settings.text | escape}}
       </a>
       <div class="hidden lg:flex lg:col-span-1 lg:justify-end">
@@ -17,12 +17,12 @@
     {
       "type": "url",
       "id": "link",
-      "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+      "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
     },
     {
       "type": "text",
       "id": "text",
-      "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label",
+      "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label",
       "default": "Insertar un texto para la barra de inicio"
     }
   ]  

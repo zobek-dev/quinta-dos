@@ -7,7 +7,7 @@
       <div class="">
         <h1 class="title-rich title-rich mb-4 lg:mb-8 uppercase font-black leading-none lg:text-[30px] text-[25px]">Compramos <strong>tu<br>
         vehículo</strong> chocado</h1>
-        <p class="mb-8 text-base lg:text-2xl">
+        <p class="mb-8 text-base">
           {{ section.settings.bajada | escape }}
         </p>
         <a href="{{ section.settings.link }}" class="btn-rounded btn-primary" target="_blank">
@@ -23,13 +23,13 @@
           loading="lazy">
       </div>
     </div>
-    <div class="lg:pl-[500px]">
-      <h2 class="title-rich title-rich my-4 lg:my-8 uppercase font-black leading-none lg:text-[30px] text-[25px]">¿Cómo lo hacemos <br><strong>en quinta?</strong></h2>
+    <div class="lg:pl-[450px]">
+      <h2 class="title-rich title-rich my-4 lg:my-8 uppercase font-black leading-none lg:text-[30px] text-[25px]">¿Cómo lo hacemos <br><strong>al comprar tu auto?</strong></h2>
       <ul>
         {% for block in section.blocks %}
           <li class="mb-4">
             <span class="text-[35px] font-black">0{{ forloop.index }}</span>
-            <div class="text-base lg:text-2xl"> 
+            <div class="text-base"> 
               {{ block.settings.content }}
             </div>
           </li>
@@ -43,10 +43,13 @@
 </div>
 
 <style>
-  .bg-section{
-    background: url({{ section.settings.image_one | img_url: master }});
-    background-repeat: no-repeat;
-    background-position: bottom left;
+  @media(min-width: 1040px){
+    .bg-section{
+      background: url({{ section.settings.image_one | img_url: 'master' }});
+      background-repeat: no-repeat;
+      background-position: 0 180%;
+      background-size: 500px 900px;
+    }
   }
 </style>
  
