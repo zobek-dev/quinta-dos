@@ -2,6 +2,66 @@
   "sections": {
     "main": {
       "type": "main-faq",
+      "blocks": {
+        "13452d55-0e16-47c7-a636-d0d2c5dbd67f": {
+          "type": "faq",
+          "settings": {
+            "title": "¿Donde están ubicados?",
+            "content": "<p>Nuestra casa matriz está ubicada en la Ruta F190, Limache, Valparaíso. Y muy pronto tendremos nuevas sucursales.<\/p>"
+          }
+        },
+        "d4f7931c-827d-4d71-b8b4-4acdc6d7f816": {
+          "type": "faq",
+          "settings": {
+            "title": "¿Con qué medios de pago cuentan?",
+            "content": "<p>Compra con todo medios de pago tus repuestos con transbank, Webpay, mercado pago, transferencias o efectivo.<\/p>"
+          }
+        },
+        "d4de2a68-4043-4978-b2f5-9f85932eb5be": {
+          "type": "faq",
+          "settings": {
+            "title": "¿Despachan a regiones del país?",
+            "content": "<p>Despachamos a todo Chile. Por  Starken, Pullman Cargo, Chilexpress, Fedex.<\/p>"
+          }
+        },
+        "7d379cbb-f3c9-4d4e-adbd-97420aed5595": {
+          "type": "faq",
+          "settings": {
+            "title": "¿Cubre la garantía de los repuestos por causas de la empresa de transporte?",
+            "content": "<p>En caso de desperfecto por causa de la empresa de transporte, es ella misma la que cubre la garantía por el valor que ha sido declarado que se le asigna al producto de despacho.<\/p>"
+          }
+        },
+        "8842d509-0e72-4530-882f-2b63fb9b08f1": {
+          "type": "faq",
+          "settings": {
+            "title": "¿Venden repuestos originales o alternativos?",
+            "content": "<p>Repuestos 100% originales y garantizados..<\/p>"
+          }
+        },
+        "5c77e827-cd97-4571-ab0c-1aa4dcf3fe4f": {
+          "type": "faq",
+          "settings": {
+            "title": "¿En cuántos días se realizan los despachos?",
+            "content": "<p>Quinta realiza los envíos en un plazo máximo de 48 hrs. Luego dependiendo de la región y la empresa de envío se suman los tiempos.<\/p>"
+          }
+        },
+        "94cfa3c9-6297-41b2-b625-0f85307f050e": {
+          "type": "faq",
+          "settings": {
+            "title": "¿Compran vehículos chocados?",
+            "content": "<p>Si, compramos vehículos chocados. Puedes contactarnos para presentar tu caso al +56 9 5348 7379.<\/p><p><span style=\"text-decoration:underline\">Los pasos de la compra son:<\/span><\/p><ul><li>Te contactamos por tu vehículo<\/li><li>Inspección visual<\/li><li>Firma de documentación<\/li><li>Transferencia<\/li><li>Retiro en grúas<\/li><\/ul>"
+          }
+        }
+      },
+      "block_order": [
+        "13452d55-0e16-47c7-a636-d0d2c5dbd67f",
+        "d4f7931c-827d-4d71-b8b4-4acdc6d7f816",
+        "d4de2a68-4043-4978-b2f5-9f85932eb5be",
+        "7d379cbb-f3c9-4d4e-adbd-97420aed5595",
+        "8842d509-0e72-4530-882f-2b63fb9b08f1",
+        "5c77e827-cd97-4571-ab0c-1aa4dcf3fe4f",
+        "94cfa3c9-6297-41b2-b625-0f85307f050e"
+      ],
       "settings": {}
     }
   },

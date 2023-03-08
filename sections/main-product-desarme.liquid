@@ -19,14 +19,17 @@
           <ul class="swiper-wrapper flex items-center">
             {% for image in product.images %}
               <li class="swiper-slide overflow-hidden flex justify-center items-center">
-                <a href="{{ image.src | img_url: '1500x' }}" class="fslightbox cursor-zoom-in" data-fslightbox="group-desktop-product">
-                  <img 
-                  src="{{ image.src | img_url: '750x' }}"  
-                  alt="{{ image.alt }}" 
-                  width="750"
-                  height="{{ 750 | divided_by: image.aspect_ratio | ceil }}"
-                  class="object-cover object-center"
-                  loading="lazy"> 
+                <a
+                  href="{{ image.src | img_url: '1500x' }}"
+                  class="fslightbox cursor-zoom-in"
+                  data-fslightbox="group-desktop-product">
+                  <img
+                    src="{{ image.src | img_url: '750x' }}"
+                    alt="{{ image.alt }}"
+                    width="750"
+                    height="{{ 750 | divided_by: image.aspect_ratio | ceil }}"
+                    class="object-cover object-center"
+                    loading="lazy">
                 </a>
               </li>
             {% endfor %}
@@ -39,22 +42,45 @@
     <div class="right">
       <h1 class="uppercase font-black leading-[1.1] text-[26px] lg:text-[35px] lg:pt-4">{{ product.title | escape }}</h1>
       <h2 class="uppercase text-base lg:text-xl mb-4">{{ product.metafields.custom.caracter_sticas.value }}</h2>
-      
-      <div class="flex gap-x-2 items-center relative mb-8" 
-      >    
-        <a href="#" class="btn-rounded text-white bg-[#00C13E] border border-[#00C13E] hover:bg-transparent hover:text-[#00C13E] text-[13px] md:text-[15px] px-4 md:px-8">
+
+      <div class="flex gap-x-2 items-center relative mb-8">
+        <a href="https://wa.me/56986622371/?text=Hola%2C%20estoy%20interesado%20en%20m%C3%A1s%20informacion%20de%20{{ product.title | url_encode }}" class="btn-rounded text-white bg-[#00C13E] border border-[#00C13E] hover:bg-transparent hover:text-[#00C13E] text-[13px] md:text-[15px] px-4 md:px-8">
           Cotiza aquí
         </a>
       </div>
       {% if product.description != blank %}
-      <div class="description mb-8">
-        <h2 class="uppercase font-bold my-4 text-xl">Descripción</h2>
-        <div class="prose">
-          {{ product.description }}
+        <div class="description mb-8">
+          <h2 class="uppercase font-bold my-4 text-xl">Descripción</h2>
+          <div class="prose">
+            {{ product.description }}
+          </div>
         </div>
-      </div>
       {% endif %}
-     
+
+      <div class="py-8" x-data="{
+                  open: false,
+                  toggleShare(){
+                    this.open = !this.open;
+                    !this.open ? $refs.modal_share.classList.add('invisible'):$refs.modal_share.classList.remove('invisible');
+                  },
+                  async copyClipboard(e){
+                    const url = e.target.dataset.url;
+                    const success= document.querySelector('#success-message')
+                    await navigator.clipboard.writeText(url).then(()=> {
+                      success.classList.remove('hidden')
+                      setTimeout(()=>
+                        success.classList.add('hidden'),5000)
+                    })
+                    .catch((error) => console.log(error))
+                  }
+                }">
+        <button class="flex justify-between items-center gap-x-2" @click="toggleShare">
+          {% render 'icon-share' %}
+          <span>Comparte esto con tus amigos</span>
+        </button>
+        {% render 'share-social' %}
+      </div>
+
       <div class="mb-8">
         <h2 class="uppercase font-bold text-xl py-4 border-b border-dashed border-[#13203A]">Específicaciones</h2>
         <table class="w-full">
@@ -106,7 +132,8 @@
                   {{ product.metafields.custom.transmision.value | escape }}
                 </span>
               </td>
-              <tr>
+            </tr>
+            <tr>
               <td class="w-1/2 py-4 border-b border-dashed border-[#13203A]">
                 <span class="uppercase font-bold text-base py-4">
                   Cilindrada
@@ -118,23 +145,7 @@
                 </span>
               </td>
             </tr>
-          </tbody>  
-        </table>
-        <table class="w-full">
-          <tbody>
-            <tr>
-              <td class="w-1/2 lg:w-1/3 py-4 border-b border-dashed border-[#13203A]">
-                <span class="uppercase font-bold text-base max-content">
-                  ¿Quieres más información?
-                </span>
-              </td>
-              <td class="w-1/2 lg:w-2/3 pl-4 py-4 border-b border-dashed border-[#13203A]">
-                <a href="{{ section.settings.contact_link }}" class="text-xs py-2 px-4 lg:px-8 text-center bg-[#ff4100] text-white uppercase whitespace-nowrap italic font-black w-max leading-none rounded-2xl" target="_blank">
-                Contactanos Aquí
-                </a>
-              </td>
-            </tr>  
-          </tbody>       
+          </tbody>
         </table>
       </div>
     </div>
@@ -142,72 +153,69 @@
 </div>
 
 {% comment %}
-  SEO
-{% endcomment %}
-
-{% comment %} {%- liquid
+SEO
+{% endcomment %}{% comment %} {%- liquid
 if product.selected_or_first_available_variant.featured_media
-  assign seo_media = product.selected_or_first_available_variant.featured_media
+assign seo_media = product.selected_or_first_available_variant.featured_media
 else
-  assign seo_media = product.featured_media
+assign seo_media = product.featured_media
 endif
 -%}
 
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org/",
-  "@type": "Product",
-  "name": {{ product.title | json }},
-  "url": {{ request.origin | append: product.url | json }},
-  {% if seo_media -%}
-    "image": [
-      {{ seo_media | image_url: width: 1920 | prepend: "https:" | json }}
-    ],
-  {%- endif %}
-  "description": {{ product.description | strip_html | json }},
-  {% if product.selected_or_first_available_variant.sku != blank -%}
-    "sku": {{ product.selected_or_first_available_variant.sku | json }},
-  {%- endif %}
-  "brand": {
-    "@type": "Brand",
-    "name": {{ product.vendor | json }}
-  },
-  "offers": [
-    {%- for variant in product.variants -%}
-      {
-        "@type" : "Offer",
-        {%- if variant.sku != blank -%}
-          "sku": {{ variant.sku | json }},
-        {%- endif -%}
-        {%- if variant.barcode.size == 12 -%}
-          "gtin12": {{ variant.barcode }},
-        {%- endif -%}
-        {%- if variant.barcode.size == 13 -%}
-          "gtin13": {{ variant.barcode }},
-        {%- endif -%}
-        {%- if variant.barcode.size == 14 -%}
-          "gtin14": {{ variant.barcode }},
-        {%- endif -%}
-        "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
-        "price" : {{ variant.price | divided_by: 100.00 | json }},
-        "priceCurrency" : {{ cart.currency.iso_code | json }},
-        "url" : {{ request.origin | append: variant.url | json }}
-      }{% unless forloop.last %},{% endunless %}
-    {%- endfor -%}
-  ]
+"@context": "http://schema.org/",
+"@type": "Product",
+"name": {{ product.title | json }},
+"url": {{ request.origin | append: product.url | json }},
+{% if seo_media -%}
+"image": [
+{{ seo_media | image_url: width: 1920 | prepend: "https:" | json }}
+],
+{%- endif %}
+"description": {{ product.description | strip_html | json }},
+{% if product.selected_or_first_available_variant.sku != blank -%}
+"sku": {{ product.selected_or_first_available_variant.sku | json }},
+{%- endif %}
+"brand": {
+"@type": "Brand",
+"name": {{ product.vendor | json }}
+},
+"offers": [
+{%- for variant in product.variants -%}
+{
+"@type" : "Offer",
+{%- if variant.sku != blank -%}
+"sku": {{ variant.sku | json }},
+{%- endif -%}
+{%- if variant.barcode.size == 12 -%}
+"gtin12": {{ variant.barcode }},
+{%- endif -%}
+{%- if variant.barcode.size == 13 -%}
+"gtin13": {{ variant.barcode }},
+{%- endif -%}
+{%- if variant.barcode.size == 14 -%}
+"gtin14": {{ variant.barcode }},
+{%- endif -%}
+"availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+"price" : {{ variant.price | divided_by: 100.00 | json }},
+"priceCurrency" : {{ cart.currency.iso_code | json }},
+"url" : {{ request.origin | append: variant.url | json }}
+}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]
 }
 </script> {% endcomment %}
-
 {% schema %}
-{
-  "name": "t:sections.main-product.name",
-  "tag": "section",
-  "settings": [
-    {
-      "type": "url",
-      "id": "contact_link",
-      "label":"Link de contacto"
-    }
-  ]
-}
+  {
+    "name": "t:sections.main-product.name",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "url",
+        "id": "contact_link",
+        "label": "Link de contacto"
+      }
+    ]
+  }
 {% endschema %}

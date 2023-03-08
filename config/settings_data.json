@@ -106,18 +106,81 @@
     "sold_out_badge_color_scheme": "inverse",
     "accent_icons": "text",
     "social_twitter_link": "",
-    "social_facebook_link": "",
+    "social_facebook_link": "https:\/\/www.facebook.com\/profile.php?id=100066949966536",
     "social_pinterest_link": "",
-    "social_instagram_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/quinta_desarmaduria_\/",
     "social_tiktok_link": "",
     "social_tumblr_link": "",
     "social_snapchat_link": "",
     "social_youtube_link": "",
     "social_vimeo_link": "",
+    "social_whatsapp_link": "https:\/\/api.whatsapp.com\/send\/?phone=56986622371&text=Hola+estoy+en+interesado+en+contactar+con+ustedes&type=phone_number&app_absent=0",
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
-    "currency_code_enabled": true
+    "favicon": "shopify:\/\/shop_images\/favicon-quinta_2.png",
+    "currency_code_enabled": true,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "link": "",
+          "text": "Repuestos y accesorios de vehículos todas las marcas"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/logo-quinta-horzontal.png",
+          "link": "https:\/\/wa.me\/56986622371\/?text=Hola%2C%20deseo%20cotizar%20lo%20siguiente",
+          "placeholder_text": "¿Qué buscas?"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "2008c8f6-3d66-4e58-b989-8eb1ed4023dd": {
+            "type": "contact",
+            "settings": {
+              "title": "Contacto",
+              "link": "shopify:\/\/pages\/contacto",
+              "text_link": "¡Escríbenos aquí!"
+            }
+          },
+          "1dc9bd9f-8b83-4987-a253-740339795ca0": {
+            "type": "location",
+            "settings": {
+              "menu_uno": "encuentr-nos",
+              "menu_dos": "contactanos"
+            }
+          },
+          "9bdec1e5-1ce2-4587-b2ef-1aea30aff1d3": {
+            "type": "menu",
+            "settings": {
+              "menu_uno": "pol-ticas",
+              "menu_dos": "informaci-n"
+            }
+          },
+          "3c1ce321-7276-45ec-8a3e-7b68cf9b89f1": {
+            "type": "payments",
+            "settings": {
+              "title": "Métodos de pago",
+              "pay_title_one": "Transferencia Bancaria",
+              "pay_title_two": "Mercado Pago",
+              "pay_title_three": ""
+            }
+          }
+        },
+        "block_order": [
+          "2008c8f6-3d66-4e58-b989-8eb1ed4023dd",
+          "1dc9bd9f-8b83-4987-a253-740339795ca0",
+          "9bdec1e5-1ce2-4587-b2ef-1aea30aff1d3",
+          "3c1ce321-7276-45ec-8a3e-7b68cf9b89f1"
+        ],
+        "settings": {}
+      }
+    },
+    "content_for_index": []
   },
   "presets": {
     "Default": {

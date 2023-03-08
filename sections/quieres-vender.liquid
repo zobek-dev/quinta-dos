@@ -7,7 +7,11 @@
       <p class="text-base lg:text-[24px]">
         {{ section.settings.response | escape }}
       </p>
-      <a href="{{ section.settings.link }}" class="btn-rounded btn-primary text-sm lg:text-base mt-8 mx-auto hover:text-white hover:border-white" target="_blank" rel="noopener noreferrer">
+      <a
+        href="{{ section.settings.link }}"
+        class="btn-rounded btn-primary text-sm lg:text-base mt-8 mx-auto hover:text-white hover:border-white"
+        target="_blank"
+        rel="noopener noreferrer">
         {{ section.settings.button_text }}
       </a>
     </div>
@@ -39,16 +43,17 @@
         "type": "url",
         "id": "link",
         "label": "Link para el boton"
-      },
-      {
+      }, {
         "type": "text",
         "id": "button_text",
         "label": "texto para el boton",
         "default": "Contáctanos"
       }
     ],
-    "presets": [{
-      "name": "Quieres Vender"
-    }]
+    "presets": [
+      {
+        "name": "Quieres Vender"
+      }
+    ]
   }
 {% endschema %}

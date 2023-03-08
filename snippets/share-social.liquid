@@ -1,0 +1,72 @@
+<div
+  class="fixed z-[9999] invisible top-0 left-0 w-full h-full"
+  x-ref="modal_share"
+  role="modal">
+  <div class="flex relative w-full h-full justify-center items-center">
+    <div class="bg-[rgba(0,0,0,.5)] absolute top-0 left-0 w-full h-full" @click="toggleShare"></div>
+    <div class="bg-white w-[90vw] lg:w-[40vw] block z-[9] p-4">
+      <div class="flex justify-between items-center">
+        <h2>Compartir en:</h2>
+        <button aria-label="cerrar el modal" @click="toggleShare">
+          {% render 'icon-close-drawer' %}
+        </button>
+      </div>
+      <ul tabindex="-1" class="flex gap-x-2 items-center mt-4">
+        <li>
+          <a
+            href="https://facebook.com/sharer.php?u={{ shop.secure_url }}{{ product.url }}"
+            target="_blank"
+            title="Facebook"
+            rel="noopener noreferer">
+            {% render 'icon-facebook', class: 'w-6', icon_color: '#FFFFFF' %}
+            <span class="sr-only">facebook</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://pinterest.com/pin/create/bookmarklet/?media={{ product.featured_image.src | img_url: '1100x' }}&url={{ shop.secure_url }}{{ product.url }}"
+            target="_blank"
+            title="Pinterest"
+            rel="noopener noreferer">
+            {% render 'icon-pinterest', class: 'w-6' %}
+            <span class="sr-only">pinterest</span>
+          </a>
+        </li>
+          {% comment %} <li>
+            <a
+              href="https://www.linkedin.com/shareArticle?mini=true&url={{ shop.secure_url | url_encode }}{{ product.url | url_encode }}"
+              target="_blank"
+              rel="noopener noreferer">
+              {% render 'icon-linkedin', class: 'w-6' %}
+              <span class="sr-only">linkedin</span>
+            </a>
+          </li> {% endcomment %}
+        <li>
+          <a
+            href="https://twitter.com/share?url={{ shop.secure_url }}{{ product.url }}"
+            target="_blank"
+            title="Twitter"
+            rel="noopener noreferer">
+            {% render 'icon-twitter', class: 'w-6' %}
+            <span class="sr-only">twitter</span>
+          </a>
+        </li>
+        <li>
+          <button
+            data-url="{{ shop.secure_url }}{{ product.url }}"
+            aria-label="copiar link"
+            title="Copiar link"
+            @click="copyClipboard($event)">
+            {% render 'icon-copy', class: 'w-4' %}
+            <span class="sr-only">
+              Copiar link
+            </span>       
+          </button>
+        </li>
+      </ul>
+      <span class="hidden text-xs" id="success-message">
+        Copiado en el portapapeles
+      </span>
+    </div>
+  </div>
+</div>

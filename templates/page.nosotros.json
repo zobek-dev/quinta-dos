@@ -2,10 +2,100 @@
   "sections": {
     "main": {
       "type": "main-nosotros",
-      "settings": {}
+      "settings": {
+        "title_one": "<p>Somos Quinta <br\/><strong>Desarmaduría<\/strong><\/p>",
+        "content_one": "<p>Nos ubicamos en la Quinta Región y abastecemos a todo Chile con sus necesidades de accesorios y repuestos de vehículos, atendidos por nuestro equipo de venta y mecánicos especialistas.<\/p><p>Trabajamos todas las marcas del mercado y contamos con stock de renovación constante de vehículos en desarme.<\/p>",
+        "image_one": "shopify:\/\/shop_images\/Rectangle_89.png",
+        "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/b5c6f2739d254767b8a723068daf055c.mp4",
+        "title_two": "<p>Nuestra <strong>Historia<\/strong><\/p>",
+        "content_two": "<p>Comenzamos el año 2015 con un pequeño potrero de 30 x 30 metros cuadrados arrendado por un lugareño de la zona.<\/p><p>Rápidamente crecimos y el año 2016 nos mudamos a un terreno 5.000 metros cuadrados que nos permitió crecer nuestra flota de vehículos y con ello los clientes.<\/p><p>Hoy en día contamos con casi 20.000 metros cuadrados entre nuestras 2 sucursales y nos estamos expandiendo continuamente a nuevas zonas para poder abastecer la gran necesidad que por parte de nuestros clientes.<\/p><p>Contamos con más de 1.000 autos en desarme y al día de hoy ya hemos desarmado más de 3.000 vehículos.<\/p>",
+        "image_two": "shopify:\/\/shop_images\/Rectangle_90.png"
+      }
+    },
+    "4908541f-58ba-4da8-91c3-de5529cfcfdc": {
+      "type": "fullw-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_91.png"
+      }
+    },
+    "0d2200dd-0d2f-41e2-a38f-478512521981": {
+      "type": "collaborators",
+      "blocks": {
+        "60bde4ce-2756-4983-ae18-d542ba6d757e": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Domenico-Fortunato.jpg",
+            "name": "Domenico Fortunato",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "d80b2416-fc4f-486d-afb4-8371e7e40020": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Fabian-Gonzalez.jpg",
+            "name": "Fabian Gonzalez",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "a94661b1-8254-45b3-ad6f-6eaa738d8f2d": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Javier-Gutierrez.jpg",
+            "name": "Javier Gutierrez",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "0452a8ea-5b90-4110-9b84-ad3f20c3ab53": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Josalin-Rincon.jpg",
+            "name": "Josalin Rincon",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "f1c5a90a-5dfe-418e-9271-f80ba8ad10f9": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Luis-Contreras.jpg",
+            "name": "Luis Contreras",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "25381314-4b4d-4e08-82ac-f080527ec992": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Solmaira-Chacon.jpg",
+            "name": "Solmaira Chacon",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "31237ef7-c322-4a0f-9905-1f4c229e341f": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Stephanie-Rincon.jpg",
+            "name": "Stephanie-Rincon",
+            "role": "Ejecutivo de Ventas"
+          }
+        }
+      },
+      "block_order": [
+        "60bde4ce-2756-4983-ae18-d542ba6d757e",
+        "d80b2416-fc4f-486d-afb4-8371e7e40020",
+        "a94661b1-8254-45b3-ad6f-6eaa738d8f2d",
+        "0452a8ea-5b90-4110-9b84-ad3f20c3ab53",
+        "f1c5a90a-5dfe-418e-9271-f80ba8ad10f9",
+        "25381314-4b4d-4e08-82ac-f080527ec992",
+        "31237ef7-c322-4a0f-9905-1f4c229e341f"
+      ],
+      "settings": {
+        "title": "<p>Conoce a <strong>nuestro equipo<\/strong><\/p>"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "4908541f-58ba-4da8-91c3-de5529cfcfdc",
+    "0d2200dd-0d2f-41e2-a38f-478512521981"
   ]
 }

@@ -2,7 +2,44 @@
   "sections": {
     "main": {
       "type": "main-vende",
-      "settings": {}
+      "blocks": {
+        "c9262e74-64c2-4190-9e0b-b39f1631355b": {
+          "type": "step",
+          "settings": {
+            "content": "<p>¿Nos ofreciste tu auto chocado? Te contactaremos por tu vehículo.<\/p>"
+          }
+        },
+        "acccbaab-0180-4c46-bbf1-eab6b0e09023": {
+          "type": "step",
+          "settings": {
+            "content": "<p>Debemos realizar una inspeccióm visual que nos permita conocer el estado del vehículo y así evaluar la propuesta económica.<\/p>"
+          }
+        },
+        "1d09efaa-91c5-463b-b66f-373df9d7562a": {
+          "type": "step",
+          "settings": {
+            "content": "<p>Si llegamos a acuerdo, te enviaremos la documentación para que firmemos el acuerdo y podamos comprar tu vehículo.<\/p>"
+          }
+        },
+        "84f1c715-9297-4f21-b555-0002fed26014": {
+          "type": "step",
+          "settings": {
+            "content": "<p>Realizamos la transferencia inmediata del monto acordado y retiramos con grúa el vehículo.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c9262e74-64c2-4190-9e0b-b39f1631355b",
+        "acccbaab-0180-4c46-bbf1-eab6b0e09023",
+        "1d09efaa-91c5-463b-b66f-373df9d7562a",
+        "84f1c715-9297-4f21-b555-0002fed26014"
+      ],
+      "settings": {
+        "image_derecha": "shopify:\/\/shop_images\/Rectangle_89_2.png",
+        "bajada": "¿Necesitas vender tu auto chocado? Llegaste al lugar indicado y si llegamos a acuerdo recibirás el pago el mismo día.",
+        "link": "https:\/\/wa.me\/56953487379\/?text=Hola%2C%20deseo%20vender%20mi%20auto%20chocado",
+        "image_one": "shopify:\/\/shop_images\/para-venta-vehiculos-2_1.png"
+      }
     }
   },
   "order": [

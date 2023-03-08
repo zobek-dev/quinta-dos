@@ -3,9 +3,102 @@
     "main": {
       "type": "main-collection",
       "settings": {}
+    },
+    "aac5258a-0ebc-4e86-8d61-1d5f24994ed4": {
+      "type": "te-ayudamos",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Product_Lockup-2048x979_1.png",
+        "question": "<p>¿Aun tienes dudas de como encontrar y adquirir <strong>tu repuesto o accesorio?<\/strong><\/p>",
+        "response": "Lo que no tenemos en stock te lo conseguimos.",
+        "link": "shopify:\/\/pages\/contacto",
+        "button_text": "te ayudamos"
+      }
+    },
+    "b11efaf3-0c26-4a96-8339-c83e460e85bb": {
+      "type": "marcas-originales",
+      "blocks": {
+        "b5d3ca6f-4216-4616-aa6b-02b258f1b501": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/toyota_1.png",
+            "title": "T﻿oyota",
+            "link": "",
+            "size": 150
+          }
+        },
+        "e6d49fbf-ac1b-40a9-9b93-8d78a3246621": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hyundai_1.png",
+            "title": "﻿Hyundai",
+            "link": "",
+            "size": 150
+          }
+        },
+        "4df38243-333f-4a59-bf57-abbfcec0140f": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/nissan_1.png",
+            "title": "﻿Nissan",
+            "link": "",
+            "size": 124
+          }
+        },
+        "85bccddb-5747-416f-9110-a7437f774030": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/suzuki.png",
+            "title": "S﻿uzuki",
+            "link": "",
+            "size": 150
+          }
+        },
+        "b4cfdd4f-787b-405c-b690-7ab4f8952f9e": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/renault_1.png",
+            "title": "R﻿enault",
+            "link": "",
+            "size": 150
+          }
+        },
+        "3b87550e-7625-4d47-8730-00540fda9807": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeep_1.png",
+            "title": "﻿Jeep",
+            "link": "",
+            "size": 122
+          }
+        }
+      },
+      "block_order": [
+        "b5d3ca6f-4216-4616-aa6b-02b258f1b501",
+        "e6d49fbf-ac1b-40a9-9b93-8d78a3246621",
+        "4df38243-333f-4a59-bf57-abbfcec0140f",
+        "85bccddb-5747-416f-9110-a7437f774030",
+        "b4cfdd4f-787b-405c-b690-7ab4f8952f9e",
+        "3b87550e-7625-4d47-8730-00540fda9807"
+      ],
+      "settings": {
+        "title": "<p>Encuentra todas las marcas | 100% originales <\/p>"
+      }
+    },
+    "16beda26-07a9-4265-8f92-e56613ce0a4a": {
+      "type": "quieres-vender",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/para-banner-3.jpg",
+        "question": "<p>¿Quieres <strong>Vender<\/strong> tu vehículo?<\/p>",
+        "response": "Compramos tu auto chocado. ¡Recibe tu pago el mismo día!",
+        "link": "https:\/\/wa.me\/56953487379\/?text=Hola%2C%20deseo%20vender%20mi%20auto%20chocado",
+        "button_text": "Contáctanos"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "aac5258a-0ebc-4e86-8d61-1d5f24994ed4",
+    "b11efaf3-0c26-4a96-8339-c83e460e85bb",
+    "16beda26-07a9-4265-8f92-e56613ce0a4a"
   ]
 }

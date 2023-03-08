@@ -1,0 +1,24 @@
+{% comment %}
+  we receive then path
+{% endcomment %}
+{% liquid
+  case request.path
+    when '/policies/privacy-policy'
+      assign policy = shop.privacy_policy
+    when '/policies/refund-policy'
+      assign policy = shop.refund_policy
+    when '/policies/terms-of-service'
+      assign policy = shop.terms_of_service
+    when '/policies/shipping-policy' 
+      assign policy = shop.shipping_policy 
+  endcase
+%}
+
+{% render 'policies' policy: policy %}
+
+{% schema %}
+  {
+    "name": "Politicas",
+    "settings": []
+  }
+{% endschema %}

@@ -3,9 +3,278 @@
     "main": {
       "type": "main-index",
       "settings": {}
+    },
+    "3071e1d6-18ac-408d-8fc0-8748876779d8": {
+      "type": "hero",
+      "settings": {
+        "image_desktop": "shopify:\/\/shop_images\/banner-2b_1.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/banner-2b_1_a40fa5a5-60b7-4b6f-8fa2-9f1bbdf7c20c.jpg",
+        "title": "<p>¿Necesitas <strong>repuestos o accesorios<\/strong> para tu vehículo?<\/p>",
+        "content": "<p>Puedes revisar nuestro stock o los vehículos que tenemos en desarme para cotizar.<\/p>",
+        "link_text": "Buscar Repuestos",
+        "link": "shopify:\/\/collections\/en-bodega"
+      }
+    },
+    "4246609f-cc90-41df-ad82-b886d52fc651": {
+      "type": "iconos",
+      "blocks": {
+        "2a36db79-e724-493c-8194-ffa0702b2564": {
+          "type": "Slideshow",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/garantia.png",
+            "title": "Garantizamos Repuestos Originales"
+          }
+        },
+        "2cdeaa6a-972c-45b8-8541-9e96eccf6fef": {
+          "type": "Slideshow",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/precio.png",
+            "title": "Mejor Relación Precio\/Calidad"
+          }
+        },
+        "6e33a0aa-7318-4675-9a48-d0a7ad1a9911": {
+          "type": "Slideshow",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/desarme.png",
+            "title": "2 Hectáreas dedicadas al desarme"
+          }
+        },
+        "97b4dee7-0f2c-4ad6-a4cd-803d25676fdc": {
+          "type": "Slideshow",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/dedicadas_fec67ae6-2631-4040-8d9d-08408878d952.png",
+            "title": "Despachos a todo Chile"
+          }
+        }
+      },
+      "block_order": [
+        "2a36db79-e724-493c-8194-ffa0702b2564",
+        "2cdeaa6a-972c-45b8-8541-9e96eccf6fef",
+        "6e33a0aa-7318-4675-9a48-d0a7ad1a9911",
+        "97b4dee7-0f2c-4ad6-a4cd-803d25676fdc"
+      ],
+      "settings": {}
+    },
+    "400f73f2-6ad9-4de7-89ee-6b510c084d37": {
+      "type": "en-desarme-home",
+      "settings": {
+        "title": "<p>Últimos vehículos <strong>en desarme<\/strong><\/p>",
+        "bajada": "<p>Revisa nuestros últimos vehículos recibidos y cotiza con nosotros.<\/p>",
+        "coll_handler": "en-desarme"
+      }
+    },
+    "7a40225d-eb9f-4e1d-b60e-2f2a1adf739c": {
+      "type": "featured-categories",
+      "blocks": {
+        "0a48037b-5d47-4113-8aaa-a481fe103952": {
+          "type": "category",
+          "settings": {
+            "coll": "en-bodega"
+          }
+        },
+        "0be7ad36-2df8-4109-85d3-3a0fedba92eb": {
+          "type": "category",
+          "settings": {
+            "coll": "motores"
+          }
+        },
+        "4456d56c-e0b1-421f-8283-7b38529a69a3": {
+          "type": "category",
+          "settings": {
+            "coll": ""
+          }
+        }
+      },
+      "block_order": [
+        "0a48037b-5d47-4113-8aaa-a481fe103952",
+        "0be7ad36-2df8-4109-85d3-3a0fedba92eb",
+        "4456d56c-e0b1-421f-8283-7b38529a69a3"
+      ],
+      "settings": {
+        "bajada": "Contamos con miles de repuestos y accesorios de todas las marcas. ¿Qué estas buscando?",
+        "link_text": "Ver Repuestos",
+        "link": "shopify:\/\/collections\/en-bodega"
+      }
+    },
+    "9022f1a1-8b7d-4692-bced-72c8bbd38e50": {
+      "type": "reviews-home",
+      "blocks": {
+        "f4582ac2-f129-4e40-b426-f8754a31d9b9": {
+          "type": "review",
+          "settings": {
+            "author": "Ricky Aranda",
+            "content": "<p>Excelente atención. Llegué asustadp ṕorque hay mucho estafador dando vueltas pero acá son 100% confiables y mi experiencia fue muy buena en todo sentido.<\/p>"
+          }
+        },
+        "0f93a227-dfa4-4155-a649-e8fdbd9af1f1": {
+          "type": "review",
+          "settings": {
+            "author": "Valentina Acevedo",
+            "content": "<p>Excelente atención gran variedad de reúestps, buenos precios y responsable, 100% recomendables!<\/p>"
+          }
+        },
+        "b0ccbcae-9a1b-47d3-9cc2-eb3a0015144d": {
+          "type": "review",
+          "settings": {
+            "author": "Felipe Sanhueza",
+            "content": "<p>Todo excelente, con estacionamiento, precios buenos.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f4582ac2-f129-4e40-b426-f8754a31d9b9",
+        "0f93a227-dfa4-4155-a649-e8fdbd9af1f1",
+        "b0ccbcae-9a1b-47d3-9cc2-eb3a0015144d"
+      ],
+      "settings": {}
+    },
+    "15fe9eea-cf48-4061-883d-4b46d8def37a": {
+      "type": "featured-products",
+      "blocks": {
+        "e5c4a94c-277b-493d-9c8a-05b74727a25d": {
+          "type": "product",
+          "settings": {
+            "product": "motor-chery-tiigo"
+          }
+        },
+        "7536dcfd-1299-4a44-81b7-381aaf118dff": {
+          "type": "product",
+          "settings": {
+            "product": "motor-chery-tiigo-2"
+          }
+        },
+        "07267c56-52d7-47da-8475-b092cbdd1408": {
+          "type": "product",
+          "settings": {
+            "product": "motor-chevrolet-onix"
+          }
+        },
+        "6b0a8744-28e9-4ab8-9c51-08376c931b9f": {
+          "type": "product",
+          "settings": {
+            "product": "motor-mahindra-pick-up"
+          }
+        },
+        "9cca940a-1b61-4457-b3b0-f170758ba769": {
+          "type": "product",
+          "settings": {
+            "product": "motor-kia-sportage-2008"
+          }
+        }
+      },
+      "block_order": [
+        "e5c4a94c-277b-493d-9c8a-05b74727a25d",
+        "7536dcfd-1299-4a44-81b7-381aaf118dff",
+        "07267c56-52d7-47da-8475-b092cbdd1408",
+        "6b0a8744-28e9-4ab8-9c51-08376c931b9f",
+        "9cca940a-1b61-4457-b3b0-f170758ba769"
+      ],
+      "settings": {
+        "bajada": "Revisa nuestra tienda online con los repuestos en stock para tu compra inmediata.",
+        "link": "shopify:\/\/collections\/en-bodega"
+      }
+    },
+    "e17b79f8-9239-4bee-87d4-2d1f15855f27": {
+      "type": "te-ayudamos",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Product_Lockup-2048x979_1.png",
+        "question": "<p>¿Aun tienes dudas de como encontrar y adquirir <strong>tu repuesto o accesorio?<\/strong><\/p>",
+        "response": "Lo que no tenemos en stock te lo conseguimos.",
+        "link": "shopify:\/\/pages\/contacto",
+        "button_text": "te ayudamos"
+      }
+    },
+    "b5864951-2687-49e2-92a4-0c73c73202f7": {
+      "type": "marcas-originales",
+      "blocks": {
+        "247132a9-b56d-4807-92c1-077a45bf689e": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/toyota_1.png",
+            "title": "Toyota",
+            "link": "",
+            "size": 150
+          }
+        },
+        "2a58b644-1356-46a2-97fe-17f410b16405": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hyundai_1.png",
+            "title": "Hyundai",
+            "link": "",
+            "size": 150
+          }
+        },
+        "d72bc50b-640a-4542-9ab3-9b2ed5bb4396": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/nissan_1.png",
+            "title": "Nissan",
+            "link": "",
+            "size": 138
+          }
+        },
+        "fb6fa2ba-c346-4e1e-be21-682c8d335da2": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/suzuki.png",
+            "title": "Suzuki",
+            "link": "",
+            "size": 150
+          }
+        },
+        "30cccaa1-b87e-43c8-91e4-76dca22cfed0": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/renault_1.png",
+            "title": "Renault",
+            "link": "",
+            "size": 150
+          }
+        },
+        "525a73aa-d78a-46bd-a525-290bbcdb5db7": {
+          "type": "marcas",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeep_1.png",
+            "title": "Jeep",
+            "link": "",
+            "size": 130
+          }
+        }
+      },
+      "block_order": [
+        "247132a9-b56d-4807-92c1-077a45bf689e",
+        "2a58b644-1356-46a2-97fe-17f410b16405",
+        "d72bc50b-640a-4542-9ab3-9b2ed5bb4396",
+        "fb6fa2ba-c346-4e1e-be21-682c8d335da2",
+        "30cccaa1-b87e-43c8-91e4-76dca22cfed0",
+        "525a73aa-d78a-46bd-a525-290bbcdb5db7"
+      ],
+      "settings": {
+        "title": "<p>Encuentra todas las marcas | 100% originales <\/p>"
+      }
+    },
+    "ea4d2394-01e0-499a-ba24-0dd23cbcd208": {
+      "type": "quieres-vender",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/para-banner-3.jpg",
+        "question": "<p>¿Quieres <strong>Vender<\/strong> tu vehículo?<\/p>",
+        "response": "Compramos tu auto chocado. ¡Recibe tu pago el mismo día!",
+        "link": "https:\/\/wa.me\/56953487379\/?text=Hola%2C%20deseo%20vender%20mi%20auto%20chocado",
+        "button_text": "Contáctanos"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "3071e1d6-18ac-408d-8fc0-8748876779d8",
+    "4246609f-cc90-41df-ad82-b886d52fc651",
+    "400f73f2-6ad9-4de7-89ee-6b510c084d37",
+    "7a40225d-eb9f-4e1d-b60e-2f2a1adf739c",
+    "9022f1a1-8b7d-4692-bced-72c8bbd38e50",
+    "15fe9eea-cf48-4061-883d-4b46d8def37a",
+    "e17b79f8-9239-4bee-87d4-2d1f15855f27",
+    "b5864951-2687-49e2-92a4-0c73c73202f7",
+    "ea4d2394-01e0-499a-ba24-0dd23cbcd208"
   ]
 }

@@ -2,7 +2,13 @@
   "sections": {
     "main": {
       "type": "main-contact",
-      "settings": {}
+      "settings": {
+        "bajada": "<p>Si aún tienes dudas sobre lo que necesitas o requieres algo específico, puedes contactarnos por diferentes medios.<\/p>",
+        "link_one": "https:\/\/wa.me\/56956084474\/?text=Hola%2C%20deseo%20contactarme%20con%20ustedes%20por",
+        "link_one_text": "+569 5608 4474",
+        "link_two": "https:\/\/wa.me\/56986622371\/?text=Hola%2C%20deseo%20contactarme%20con%20ustedes%20por",
+        "link_two_text": "+569 8662 2371"
+      }
     }
   },
   "order": [
