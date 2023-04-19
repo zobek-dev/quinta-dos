@@ -1,4 +1,4 @@
-<div class="mb-12 relative">
+<div class="mb-12 relative min-h-[80vh] flex flex-col justify-center items-center">
   <div class="wrapper">
     <div class="pt-4">
       {% render 'breadcrumbs' %}
@@ -15,85 +15,112 @@
 
         <h2 class="text-xl uppercase mb-2 mt-8 font-bold">Contáctanos:</h2>
         <div class="flex flex-col lg:flex-row gap-2 lg:items-center mb-8">
-          <a href="{{ section.settings.link_one }}" class="btn-rounded btn-secondary">
-            {{ section.settings.link_one_text }}
-          </a>
-          <a href="{{ section.settings.link_two }}" class="btn-rounded btn-secondary">
-            {{ section.settings.link_two_text }}
-          </a>
+          {% if section.settings.link_one != blank %}
+            <a href="{{ section.settings.link_one }}" class="btn-rounded btn-secondary">
+              {{ section.settings.link_one_text }}
+            </a>
+          {% endif %}
+          {% if section.settings.link_two != blank %}
+            <a href="{{ section.settings.link_two }}" class="btn-rounded btn-secondary">
+              {{ section.settings.link_two_text }}
+            </a>
+          {% endif %}
         </div>
         <h2 class="text-xl uppercase mt-8 mb-2 font-bold">Nuestras Sucursales:</h2>
-        <a href="https://www.google.com/maps/place/Quinta+Desarmadur%C3%ADa/@-32.9244334,-71.436188,15.61z/data=!4m9!1m2!2m1!1sRuta+F190,+Limache,+Valpara%C3%ADso!3m5!1s0x9689db2e41c6018d:0x5cd7f282822ba67e!8m2!3d-32.9275493!4d-71.4405103!15sCiBSdXRhIEYgMTkwLCBMaW1hY2hlLCBWYWxwYXJhw61zb1ogIh5ydXRhIGYgMTkwIGxpbWFjaGUgdmFscGFyYcOtc2-SARhhdXRvX2JvZHlfcGFydHNfc3VwcGxpZXLgAQA" class="block mb-1 hover:underline hover:underline-offset-2" target="_blank" rel="noopener noreferrer">Ruta F190, Limache, Valparaíso</a>
+        <a
+          href="https://www.google.com/maps/place/Quinta+Desarmadur%C3%ADa/@-32.9244334,-71.436188,15.61z/data=!4m9!1m2!2m1!1sRuta+F190,+Limache,+Valpara%C3%ADso!3m5!1s0x9689db2e41c6018d:0x5cd7f282822ba67e!8m2!3d-32.9275493!4d-71.4405103!15sCiBSdXRhIEYgMTkwLCBMaW1hY2hlLCBWYWxwYXJhw61zb1ogIh5ydXRhIGYgMTkwIGxpbWFjaGUgdmFscGFyYcOtc2-SARhhdXRvX2JvZHlfcGFydHNfc3VwcGxpZXLgAQA"
+          class="block mb-1 hover:underline hover:underline-offset-2"
+          target="_blank"
+          rel="noopener noreferrer">Ruta F190, Limache, Valparaíso</a>
       </div>
       <div>
         <p class="mb-4">Completa el siguiente formulario con tus datos.</p>
         {% form 'contact' %}
           {{ form.errors | default_errors }}
-        
+
           <div class="first-name mb-4">
-            <input type="text" name="contact[nombre]" class="p-2 w-full border border-[#13203A] rounded-sm focus:outline-[#FF4100]" placeholder="Nombre" id="fullname" />
+            <input
+              type="text"
+              name="contact[nombre]"
+              class="p-2 w-full border border-[#13203A] rounded-sm focus:outline-[#FF4100]"
+              placeholder="Nombre"
+              id="fullname" />
           </div>
 
           <div class="phone mb-4">
-            <input type="tel" name="contact[telefono]" placeholder="Teléfono" class="p-2 w-full border border-[#13203A] rounded-sm focus:outline-[#FF4100]" id="phone" />
+            <input
+              type="tel"
+              name="contact[telefono]"
+              placeholder="Teléfono"
+              class="p-2 w-full border border-[#13203A] rounded-sm focus:outline-[#FF4100]"
+              id="phone" />
           </div>
-        
+
           <div class="email mb-4">
-            <input type="email" name="contact[email]" placeholder="Correo Eléctronico" class="p-2 w-full border border-[#13203A] rounded-sm focus:outline-[#FF4100]" id="email" />
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="Correo Eléctronico"
+              class="p-2 w-full border border-[#13203A] rounded-sm focus:outline-[#FF4100]"
+              id="email" />
           </div>
 
           <div class="message mb-4">
-            <textarea name="contact[body]" placeholder="Mensaje" class="p-2 w-full border border-[#13203A] rounded-sm focus:outline-[#FF4100]" id="message"></textarea>
+            <textarea
+              name="contact[body]"
+              placeholder="Mensaje"
+              class="p-2 w-full border border-[#13203A] rounded-sm focus:outline-[#FF4100]"
+              id="message"></textarea>
           </div>
-        
+
           <div class="submit">
-            <input type="submit" class="btn-rounded text-white bg-[#FF4100] border border-[#FF4100] hover:bg-transparent hover:text-[#FF4100] mx-auto" value="Enviar"/>
+            <input
+              type="submit"
+              class="btn-rounded text-white bg-[#FF4100] border border-[#FF4100] hover:bg-transparent hover:text-[#FF4100] mx-auto"
+              value="Enviar" />
           </div>
         {% endform %}
       </div>
     </div>
-    
   </div>
 </div>
 
 {% schema %}
-{
-  "name": "Contacto",
-  "tag": "section",
-  "settings": [
-    {
-      "type": "richtext",
-      "id": "bajada",
-      "label": "Inserta el texto de la bajada",
-      "default": "<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, similique.</p>"
-    },
-    {
-      "type": "url",
-      "id": "link_one",
-      "label": "Inserta el link del número 1"
-    },
-    {
-      "type": "text",
-      "id": "link_one_text",
-      "label": "Inserta texto del link 1",
-      "default": "+569 6565 6565"
-    },
-    {
-      "type": "url",
-      "id": "link_two",
-      "label": "Inserta el link del número 2"
-    },
-    {
-      "type": "text",
-      "id": "link_two_text",
-      "label": "Inserta texto del link 2",
-      "default": "+569 5656 5656"
-    },
-    {
-      "type": "image_picker",
-      "id": "imagen_fondo",
-      "label": "Insertar imagen de fondo."
-    }
-  ]
-}  
-{% endschema %}  
+  {
+    "name": "Contacto",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "bajada",
+        "label": "Inserta el texto de la bajada",
+        "default": "<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, similique.</p>"
+      },
+      {
+        "type": "url",
+        "id": "link_one",
+        "label": "Inserta el link del número 1"
+      },
+      {
+        "type": "text",
+        "id": "link_one_text",
+        "label": "Inserta texto del link 1",
+        "default": "+569 6565 6565"
+      },
+      {
+        "type": "url",
+        "id": "link_two",
+        "label": "Inserta el link del número 2"
+      }, {
+        "type": "text",
+        "id": "link_two_text",
+        "label": "Inserta texto del link 2",
+        "default": "+569 5656 5656"
+      }, {
+        "type": "image_picker",
+        "id": "imagen_fondo",
+        "label": "Insertar imagen de fondo."
+      }
+    ]
+  }
+{% endschema %}

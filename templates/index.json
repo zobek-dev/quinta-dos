@@ -10,9 +10,11 @@
         "image_desktop": "shopify:\/\/shop_images\/banner-2b_1.jpg",
         "image_mobile": "shopify:\/\/shop_images\/banner-2b_1_a40fa5a5-60b7-4b6f-8fa2-9f1bbdf7c20c.jpg",
         "title": "<p>¿Necesitas <strong>repuestos o accesorios<\/strong> para tu vehículo?<\/p>",
-        "content": "<p>Puedes revisar nuestro stock o los vehículos que tenemos en desarme para cotizar.<\/p>",
+        "content": "<p>Estamos en proceso de subir nuestro stock disponible en bodega. <br\/>Puedes revisar algunos repuestos o si lo prefieres contactar a un vendedor.<\/p>",
         "link_text": "Buscar Repuestos",
-        "link": "shopify:\/\/collections\/en-bodega"
+        "link": "shopify:\/\/collections\/en-bodega",
+        "green_link_text": "Contactar vendedor",
+        "green_link": "https:\/\/api.whatsapp.com\/send\/?phone=56986622371&text=Hola%2C+deseo+cotizar+lo+siguiente&type=phone_number&app_absent=0"
       }
     },
     "4246609f-cc90-41df-ad82-b886d52fc651": {
@@ -81,14 +83,21 @@
         "4456d56c-e0b1-421f-8283-7b38529a69a3": {
           "type": "category",
           "settings": {
-            "coll": ""
+            "coll": "cajas-de-cambio"
+          }
+        },
+        "34322713-fd31-4268-ac7b-d040829f77bc": {
+          "type": "category",
+          "settings": {
+            "coll": "puertas"
           }
         }
       },
       "block_order": [
         "0a48037b-5d47-4113-8aaa-a481fe103952",
         "0be7ad36-2df8-4109-85d3-3a0fedba92eb",
-        "4456d56c-e0b1-421f-8283-7b38529a69a3"
+        "4456d56c-e0b1-421f-8283-7b38529a69a3",
+        "34322713-fd31-4268-ac7b-d040829f77bc"
       ],
       "settings": {
         "bajada": "Contamos con miles de repuestos y accesorios de todas las marcas. ¿Qué estas buscando?",

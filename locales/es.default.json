@@ -441,5 +441,18 @@
       "copy_code_success": "El código se copió correctamente",
       "print_gift_card": "Imprimir"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "delivery_options": {
+        "free_total_label": "Por pagar"
+      },
+      "order_summary": {
+        "free_total_label": "Por pagar "
+      },
+      "shipping": {
+        "free_rate_label": "Por Pagar "
+      }
+    }
   }
 }
