@@ -28,6 +28,9 @@
             </div>
             {% assign menu_dos = linklists[block.settings.menu_dos] %}
             <div>
+              {% comment %} {% liquid
+                echo menu_dos.handle
+              %} {% endcomment %}
               <h2 class="text-[18px] font-bold uppercase mb-2">{{ menu_dos.title | escape }}</h2>
               <ul>
                 {% for link in menu_dos.links %}
@@ -64,6 +67,9 @@
             <div>
               {% assign numbers = linklists[block.settings.menu_dos] %}
               <h3 class="text-[18px] font-bold uppercase mb-2">{{ numbers.title | escape }}</h2>
+              {% if numbers.handle == 'contactanos' %}
+                <h4 class="text-base mb-2">Escribenos o llamanos a:</h4>
+              {% endif %}
               <ul>
                 {% for link in numbers.links %}
                   <li class="mb-2">

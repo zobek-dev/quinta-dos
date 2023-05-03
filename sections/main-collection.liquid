@@ -211,7 +211,7 @@
             </option>
           {% endfor %}
         </select>
-        <span class="text-sm lg:text-base" id="Count">{{ collection.all_products_count }} productos</span>
+        <span class="text-sm lg:text-base" id="Count">{{ collection.all_products_count }} {% if collection.handle == 'en-desarme' %}Vehículos{% else %}Repuestos{% endif %}</span>
       </div>
     </div>
     <div class="grid lg:grid-cols-4 gap-x-4">
