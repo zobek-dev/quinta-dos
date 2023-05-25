@@ -25,7 +25,7 @@
         "60bde4ce-2756-4983-ae18-d542ba6d757e": {
           "type": "colaborador",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/Domenico-Fortunato.jpg",
+            "avatar": "shopify:\/\/shop_images\/Domenico.jpg",
             "name": "Domenico Fortunato",
             "role": "Ejecutivo de Ventas"
           }
@@ -33,7 +33,7 @@
         "d80b2416-fc4f-486d-afb4-8371e7e40020": {
           "type": "colaborador",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/Fabian-Gonzalez.jpg",
+            "avatar": "shopify:\/\/shop_images\/Fabian_G.jpg",
             "name": "Fabian Gonzalez",
             "role": "Ejecutivo de Ventas"
           }
@@ -41,7 +41,7 @@
         "a94661b1-8254-45b3-ad6f-6eaa738d8f2d": {
           "type": "colaborador",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/Javier-Gutierrez.jpg",
+            "avatar": "shopify:\/\/shop_images\/Javier_G.jpg",
             "name": "Javier Gutierrez",
             "role": "Ejecutivo de Ventas"
           }
@@ -57,7 +57,7 @@
         "f1c5a90a-5dfe-418e-9271-f80ba8ad10f9": {
           "type": "colaborador",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/Luis-Contreras.jpg",
+            "avatar": "shopify:\/\/shop_images\/Luis_C.jpg",
             "name": "Luis Contreras",
             "role": "Ejecutivo de Ventas"
           }
@@ -65,7 +65,7 @@
         "25381314-4b4d-4e08-82ac-f080527ec992": {
           "type": "colaborador",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/Solmaira-Chacon.jpg",
+            "avatar": "shopify:\/\/shop_images\/Solmaria.jpg",
             "name": "Solmaira Chacon",
             "role": "Ejecutivo de Ventas"
           }
@@ -73,8 +73,16 @@
         "31237ef7-c322-4a0f-9905-1f4c229e341f": {
           "type": "colaborador",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/Stephanie-Rincon.jpg",
+            "avatar": "shopify:\/\/shop_images\/Stephanie.jpg",
             "name": "Stephanie Rincon",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "bc7e4916-39ec-4c0e-8f06-7a32eb005128": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Jose_Crespo.jpg",
+            "name": "Jose Crespo",
             "role": "Ejecutivo de Ventas"
           }
         }
@@ -86,7 +94,8 @@
         "0452a8ea-5b90-4110-9b84-ad3f20c3ab53",
         "f1c5a90a-5dfe-418e-9271-f80ba8ad10f9",
         "25381314-4b4d-4e08-82ac-f080527ec992",
-        "31237ef7-c322-4a0f-9905-1f4c229e341f"
+        "31237ef7-c322-4a0f-9905-1f4c229e341f",
+        "bc7e4916-39ec-4c0e-8f06-7a32eb005128"
       ],
       "settings": {
         "title": "<p>Conoce a <strong>nuestro equipo<\/strong><\/p>"

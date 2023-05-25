@@ -7,14 +7,14 @@
     "3071e1d6-18ac-408d-8fc0-8748876779d8": {
       "type": "hero",
       "settings": {
-        "image_desktop": "shopify:\/\/shop_images\/banner-2b_1.jpg",
-        "image_mobile": "shopify:\/\/shop_images\/banner-2b_1_a40fa5a5-60b7-4b6f-8fa2-9f1bbdf7c20c.jpg",
-        "title": "<p>¿Necesitas <strong>repuestos o accesorios<\/strong> para tu vehículo?<\/p>",
-        "content": "<p>Estamos en proceso de subir nuestro stock disponible en bodega. <br\/>Puedes revisar algunos repuestos o si lo prefieres contactar a un vendedor.<\/p>",
+        "image_desktop": "shopify:\/\/shop_images\/1_489bb7d5-ee75-45f1-9b3e-81bac8eb5c9b.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/1_489bb7d5-ee75-45f1-9b3e-81bac8eb5c9b.jpg",
+        "title": "<p>Encuentra el <strong>repuesto que necesitas<\/strong> para tu vehículo<\/p>",
+        "content": "<p>Revisa nuestro stock o cotiza con nuestros vendedores<\/p>",
         "link_text": "Buscar Repuestos",
         "link": "shopify:\/\/collections\/en-bodega",
-        "green_link_text": "Contactar vendedor",
-        "green_link": "https:\/\/wa.me\/56956084474?text=Hola%2C%20deseo%20cotizar%20lo%20siguiente"
+        "green_link_text": "Contáctanos",
+        "green_link": "https:\/\/wa.me\/56986622371?text=Hola%2C%20deseo%20cotizar%20lo%20siguiente"
       }
     },
     "4246609f-cc90-41df-ad82-b886d52fc651": {
@@ -54,86 +54,6 @@
         "2cdeaa6a-972c-45b8-8541-9e96eccf6fef",
         "6e33a0aa-7318-4675-9a48-d0a7ad1a9911",
         "97b4dee7-0f2c-4ad6-a4cd-803d25676fdc"
-      ],
-      "settings": {}
-    },
-    "400f73f2-6ad9-4de7-89ee-6b510c084d37": {
-      "type": "en-desarme-home",
-      "settings": {
-        "title": "<p>Últimos vehículos <strong>en desarme<\/strong><\/p>",
-        "bajada": "<p>Revisa nuestros últimos vehículos recibidos y cotiza con nosotros.<\/p>",
-        "coll_handler": "en-desarme"
-      }
-    },
-    "7a40225d-eb9f-4e1d-b60e-2f2a1adf739c": {
-      "type": "featured-categories",
-      "blocks": {
-        "0a48037b-5d47-4113-8aaa-a481fe103952": {
-          "type": "category",
-          "settings": {
-            "coll": "en-bodega"
-          }
-        },
-        "0be7ad36-2df8-4109-85d3-3a0fedba92eb": {
-          "type": "category",
-          "settings": {
-            "coll": "motores"
-          }
-        },
-        "4456d56c-e0b1-421f-8283-7b38529a69a3": {
-          "type": "category",
-          "settings": {
-            "coll": "cajas-de-cambio"
-          }
-        },
-        "34322713-fd31-4268-ac7b-d040829f77bc": {
-          "type": "category",
-          "settings": {
-            "coll": "puertas"
-          }
-        }
-      },
-      "block_order": [
-        "0a48037b-5d47-4113-8aaa-a481fe103952",
-        "0be7ad36-2df8-4109-85d3-3a0fedba92eb",
-        "4456d56c-e0b1-421f-8283-7b38529a69a3",
-        "34322713-fd31-4268-ac7b-d040829f77bc"
-      ],
-      "settings": {
-        "bajada": "Contamos con miles de repuestos y accesorios de todas las marcas. ¿Qué estas buscando?",
-        "link_text": "Ver Repuestos",
-        "link": "shopify:\/\/collections\/en-bodega"
-      }
-    },
-    "9022f1a1-8b7d-4692-bced-72c8bbd38e50": {
-      "type": "reviews-home",
-      "blocks": {
-        "f4582ac2-f129-4e40-b426-f8754a31d9b9": {
-          "type": "review",
-          "settings": {
-            "author": "Ricky Aranda",
-            "content": "<p>Excelente atención. Llegué asustadp ṕorque hay mucho estafador dando vueltas pero acá son 100% confiables y mi experiencia fue muy buena en todo sentido.<\/p>"
-          }
-        },
-        "0f93a227-dfa4-4155-a649-e8fdbd9af1f1": {
-          "type": "review",
-          "settings": {
-            "author": "Valentina Acevedo",
-            "content": "<p>Excelente atención gran variedad de reúestps, buenos precios y responsable, 100% recomendables!<\/p>"
-          }
-        },
-        "b0ccbcae-9a1b-47d3-9cc2-eb3a0015144d": {
-          "type": "review",
-          "settings": {
-            "author": "Felipe Sanhueza",
-            "content": "<p>Todo excelente, con estacionamiento, precios buenos.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "f4582ac2-f129-4e40-b426-f8754a31d9b9",
-        "0f93a227-dfa4-4155-a649-e8fdbd9af1f1",
-        "b0ccbcae-9a1b-47d3-9cc2-eb3a0015144d"
       ],
       "settings": {}
     },
@@ -182,6 +102,104 @@
         "bajada": "Revisa nuestra tienda online con los repuestos en stock para tu compra inmediata.",
         "link": "shopify:\/\/collections\/en-bodega"
       }
+    },
+    "8f0f6a62-4af8-4a22-8ec5-f028d0c2ceb2": {
+      "type": "two-columns",
+      "settings": {
+        "title": "<p>Hola, somos <strong>Quinta desarmaduría<\/strong><\/p>",
+        "content": "<p>Nos ubicamos en la Quinta Región y abastecemos a todo Chile con sus necesidades de accesorios y repuestos de vehículos, atendidos por nuestro equipo de venta y mecánicos especialistas. Trabajamos todas las marcas del mercado y contamos con stock de renovación constante de vehículos en desarme.<\/p>",
+        "btn_text": "Cónoce al equipo",
+        "btn_link": "shopify:\/\/pages\/nosotros",
+        "image": "shopify:\/\/shop_images\/desarme.jpg"
+      }
+    },
+    "260da535-0b25-49b8-b716-0f0f87072061": {
+      "type": "adress",
+      "settings": {
+        "address_text": "Visítanos en ruta F190, Limache, Valparaíso.",
+        "link": "",
+        "map": "pb=!1m18!1m12!1m3!1d3348.8884714778037!2d-71.44308522395052!3d-32.927544770924676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689db2e41c6018d%3A0x5cd7f282822ba67e!2sQuinta%20Desarmadur%C3%ADa!5e0!3m2!1ses-419!2scl!4v1685022721422!5m2!1ses-419!2scl"
+      }
+    },
+    "7a40225d-eb9f-4e1d-b60e-2f2a1adf739c": {
+      "type": "featured-categories",
+      "blocks": {
+        "0a48037b-5d47-4113-8aaa-a481fe103952": {
+          "type": "category",
+          "settings": {
+            "coll": "en-bodega"
+          }
+        },
+        "0be7ad36-2df8-4109-85d3-3a0fedba92eb": {
+          "type": "category",
+          "settings": {
+            "coll": "motores"
+          }
+        },
+        "4456d56c-e0b1-421f-8283-7b38529a69a3": {
+          "type": "category",
+          "settings": {
+            "coll": "cajas-de-cambio"
+          }
+        },
+        "34322713-fd31-4268-ac7b-d040829f77bc": {
+          "type": "category",
+          "settings": {
+            "coll": "puertas"
+          }
+        }
+      },
+      "block_order": [
+        "0a48037b-5d47-4113-8aaa-a481fe103952",
+        "0be7ad36-2df8-4109-85d3-3a0fedba92eb",
+        "4456d56c-e0b1-421f-8283-7b38529a69a3",
+        "34322713-fd31-4268-ac7b-d040829f77bc"
+      ],
+      "settings": {
+        "bajada": "Contamos con miles de repuestos y accesorios de todas las marcas. ¿Qué estas buscando?",
+        "link_text": "Ver Repuestos",
+        "link": "shopify:\/\/collections\/en-bodega"
+      }
+    },
+    "400f73f2-6ad9-4de7-89ee-6b510c084d37": {
+      "type": "en-desarme-home",
+      "settings": {
+        "title": "<p>Últimos vehículos <strong>en desarme<\/strong><\/p>",
+        "bajada": "<p>Revisa nuestros últimos vehículos recibidos y cotiza con nosotros.<\/p>",
+        "coll_handler": "en-desarme"
+      }
+    },
+    "9022f1a1-8b7d-4692-bced-72c8bbd38e50": {
+      "type": "reviews-home",
+      "blocks": {
+        "f4582ac2-f129-4e40-b426-f8754a31d9b9": {
+          "type": "review",
+          "settings": {
+            "author": "Ricky Aranda",
+            "content": "<p>Excelente atención. Llegué asustadp ṕorque hay mucho estafador dando vueltas pero acá son 100% confiables y mi experiencia fue muy buena en todo sentido.<\/p>"
+          }
+        },
+        "0f93a227-dfa4-4155-a649-e8fdbd9af1f1": {
+          "type": "review",
+          "settings": {
+            "author": "Valentina Acevedo",
+            "content": "<p>Excelente atención gran variedad de reúestps, buenos precios y responsable, 100% recomendables!<\/p>"
+          }
+        },
+        "b0ccbcae-9a1b-47d3-9cc2-eb3a0015144d": {
+          "type": "review",
+          "settings": {
+            "author": "Felipe Sanhueza",
+            "content": "<p>Todo excelente, con estacionamiento, precios buenos.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f4582ac2-f129-4e40-b426-f8754a31d9b9",
+        "0f93a227-dfa4-4155-a649-e8fdbd9af1f1",
+        "b0ccbcae-9a1b-47d3-9cc2-eb3a0015144d"
+      ],
+      "settings": {}
     },
     "e17b79f8-9239-4bee-87d4-2d1f15855f27": {
       "type": "te-ayudamos",
@@ -278,10 +296,12 @@
     "main",
     "3071e1d6-18ac-408d-8fc0-8748876779d8",
     "4246609f-cc90-41df-ad82-b886d52fc651",
-    "400f73f2-6ad9-4de7-89ee-6b510c084d37",
-    "7a40225d-eb9f-4e1d-b60e-2f2a1adf739c",
-    "9022f1a1-8b7d-4692-bced-72c8bbd38e50",
     "15fe9eea-cf48-4061-883d-4b46d8def37a",
+    "8f0f6a62-4af8-4a22-8ec5-f028d0c2ceb2",
+    "260da535-0b25-49b8-b716-0f0f87072061",
+    "7a40225d-eb9f-4e1d-b60e-2f2a1adf739c",
+    "400f73f2-6ad9-4de7-89ee-6b510c084d37",
+    "9022f1a1-8b7d-4692-bced-72c8bbd38e50",
     "e17b79f8-9239-4bee-87d4-2d1f15855f27",
     "b5864951-2687-49e2-92a4-0c73c73202f7",
     "ea4d2394-01e0-499a-ba24-0dd23cbcd208"

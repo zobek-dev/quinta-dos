@@ -1,25 +1,24 @@
 <div class="bg-[#132034] relative hero overflow-hidden h-[400px] md:h-[800px]">
   <div class="z-[4] absolute top-0 left-0 right-0 bottom-0 bg-[rgba(19,32,58,0.4)] w-full">
     <div class="wrapper py-32 md:py-64 relative">
-      <h1 class="text-white uppercase leading-[1.1] font-black text-[25px] lg:text-[60px] max-w-[750px] title-rich mb-4 lg:mb-8">
+      <h1 class="text-white uppercase leading-[1.1] font-black text-[25px] lg:text-[60px] max-w-[1090px] title-rich my-4 lg:my-8 mx-auto text-center">
         {{ section.settings.title }}
       </h1>
-      <div class="text-white max-w-[750] text-sm md:text-[24px] mb-4 lg:mb-8 leading-[1.1]">
+      <div class="text-white text-center text-sm md:text-[24px] mb-4 lg:mb-8 leading-[1.1]">
         {{ section.settings.content }}
       </div>
-      <div class="flex flex-col lg:flex-row lg:items-center gap-x-4 gap-y-2">
-        {% if section.settings.link != blank %}
-        <a href="{{ section.settings.green_link }}" class="btn-rounded btn-secondary text-sm md:text-xl hover:text-white hover:border-white" target="_blank">
-          {{ section.settings.green_link_text | escape }}
-        </a>
-        {% endif %}
+      <div class="flex items-center justify-center gap-x-2">
         {% if section.settings.link != blank %}
         <a href="{{ section.settings.link }}" class="btn-rounded btn-primary text-sm md:text-xl hover:text-white hover:border-white w-[235px] md:w-[300px] lg:w-auto text-center">
           {{ section.settings.link_text | escape }}
         </a>
         {% endif %}
-      </div>
-      
+        {% if section.settings.link != blank %}
+        <a href="{{ section.settings.green_link }}" class="btn-rounded btn-secondary text-sm md:text-xl hover:text-white hover:border-white" target="_blank">
+          {{ section.settings.green_link_text | escape }}
+        </a>
+        {% endif %}  
+      </div>  
     </div>
   </div>
 </div>

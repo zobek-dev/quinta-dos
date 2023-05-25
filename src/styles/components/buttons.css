@@ -1,5 +1,5 @@
 .btn-rounded{
-  @apply block py-2 px-8 uppercase rounded-[32px] italic text-[15px] font-bold transition-colors duration-200 ease-in-out w-max;
+  @apply block py-2 px-4 lg:px-8 uppercase rounded-[32px] italic text-[15px] font-bold transition-colors duration-200 ease-in-out w-max;
 }
 
 .btn-primary{

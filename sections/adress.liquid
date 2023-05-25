@@ -1,0 +1,45 @@
+<div>
+  <div class="bg-[#13203A] text-white text-center py-4" >
+    <a href="{{ section.settings.link }}" class="font-black text-xl lg:text-[30px] tracking-[1.5px] underline underline-offset-2 uppercase">
+      {{ section.settings.address_text }}
+    </a>
+  </div>
+  <div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.8884714778037!2d-71.44308522395052!3d-32.927544770924676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689db2e41c6018d%3A0x5cd7f282822ba67e!2sQuinta%20Desarmadur%C3%ADa!5e0!3m2!1ses-419!2scl!4v1685022721422!5m2!1ses-419!2scl" frameborder="0" width="100%" height="233" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
+
+{% comment %} 
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.8884714778037!2d-71.44308522395052!3d-32.927544770924676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689db2e41c6018d%3A0x5cd7f282822ba67e!2sQuinta%20Desarmadur%C3%ADa!5e0!3m2!1ses-419!2scl!4v1685022721422!5m2!1ses-419!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> {% endcomment %}
+
+{% schema %}
+  {
+    "name": "Home Address",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text", 
+        "id": "address_text",
+        "label": "Texto de la dirección",
+        "default": "Visítanos en ruta F190, Limache, Valparaíso."
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link de google map"
+      },
+      {
+        "type": "text",
+        "id": "map",
+        "label": "Inserta el embed key del mapa",
+        "default": "pb=!1m18!1m12!1m3!1d3348.8884714778037!2d-71.44308522395052!3d-32.927544770924676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689db2e41c6018d%3A0x5cd7f282822ba67e!2sQuinta%20Desarmadur%C3%ADa!5e0!3m2!1ses-419!2scl!4v1685022721422!5m2!1ses-419!2scl"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home Adress"
+      }
+    ]
+  }
+{% endschema %}
