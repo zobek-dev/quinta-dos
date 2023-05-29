@@ -7,17 +7,18 @@
       <div class="text-white text-center text-sm md:text-[24px] mb-4 lg:mb-8 leading-[1.1]">
         {{ section.settings.content }}
       </div>
-      <div class="flex items-center justify-center gap-x-2">
+      <div class="flex flex-col items-center justify-center gap-x-2">
         {% if section.settings.link != blank %}
         <a href="{{ section.settings.link }}" class="btn-rounded btn-primary text-sm md:text-xl hover:text-white hover:border-white w-[235px] md:w-[300px] lg:w-auto text-center">
           {{ section.settings.link_text | escape }}
         </a>
         {% endif %}
-        {% if section.settings.link != blank %}
+        {% comment %} {% if section.settings.link != blank %}
         <a href="{{ section.settings.green_link }}" class="btn-rounded btn-secondary text-sm md:text-xl hover:text-white hover:border-white" target="_blank">
           {{ section.settings.green_link_text | escape }}
         </a>
-        {% endif %}  
+        {% endif %}   {% endcomment %}
+        <p class="block my-8 text-white text-center text-sm lg:text-[25px]">Escríbenos por <a href="https://wa.me/56986622371?text=Hola%2C+deseo+consultar+por+repuestos+para" target="_blank" class="underline underline-offset-2 text-[#00C13E]">whatsapp</a> o llamanos al <a href="tel:+569 5079 9740" class="underline underline-offset-2 text-[#00C13E]">+569 5079 9740</a></p> 
       </div>  
     </div>
   </div>

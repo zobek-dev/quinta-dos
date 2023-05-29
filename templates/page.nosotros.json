@@ -22,6 +22,14 @@
     "0d2200dd-0d2f-41e2-a38f-478512521981": {
       "type": "collaborators",
       "blocks": {
+        "edb84631-a76e-4528-a5fd-c4ef4e0e5771": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Pablo.jpg",
+            "name": "Pablo Ovalle",
+            "role": "Gerente Comercial"
+          }
+        },
         "60bde4ce-2756-4983-ae18-d542ba6d757e": {
           "type": "colaborador",
           "settings": {
@@ -46,11 +54,11 @@
             "role": "Ejecutivo de Ventas"
           }
         },
-        "0452a8ea-5b90-4110-9b84-ad3f20c3ab53": {
+        "25381314-4b4d-4e08-82ac-f080527ec992": {
           "type": "colaborador",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/Josalin-Rincon.jpg",
-            "name": "Josalin Rincon",
+            "avatar": "shopify:\/\/shop_images\/Solmaria.jpg",
+            "name": "Solmaira Chacon",
             "role": "Ejecutivo de Ventas"
           }
         },
@@ -59,14 +67,6 @@
           "settings": {
             "avatar": "shopify:\/\/shop_images\/Luis_C.jpg",
             "name": "Luis Contreras",
-            "role": "Ejecutivo de Ventas"
-          }
-        },
-        "25381314-4b4d-4e08-82ac-f080527ec992": {
-          "type": "colaborador",
-          "settings": {
-            "avatar": "shopify:\/\/shop_images\/Solmaria.jpg",
-            "name": "Solmaira Chacon",
             "role": "Ejecutivo de Ventas"
           }
         },
@@ -85,26 +85,91 @@
             "name": "Jose Crespo",
             "role": "Ejecutivo de Ventas"
           }
+        },
+        "ce3148fa-06a3-4a80-8215-2be3f378dfce": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Eduardo.jpg",
+            "name": "Eduardo Carrasco",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "508d4cf8-588e-4dd4-9dd7-f17d1bfe470b": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Rodrigo.jpg",
+            "name": "Rodrigo Fuentes",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "0452a8ea-5b90-4110-9b84-ad3f20c3ab53": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Josalin-Rincon.jpg",
+            "name": "Josalin Rincon",
+            "role": "Ejecutivo de Ventas"
+          }
         }
       },
       "block_order": [
+        "edb84631-a76e-4528-a5fd-c4ef4e0e5771",
         "60bde4ce-2756-4983-ae18-d542ba6d757e",
         "d80b2416-fc4f-486d-afb4-8371e7e40020",
         "a94661b1-8254-45b3-ad6f-6eaa738d8f2d",
-        "0452a8ea-5b90-4110-9b84-ad3f20c3ab53",
-        "f1c5a90a-5dfe-418e-9271-f80ba8ad10f9",
         "25381314-4b4d-4e08-82ac-f080527ec992",
+        "f1c5a90a-5dfe-418e-9271-f80ba8ad10f9",
         "31237ef7-c322-4a0f-9905-1f4c229e341f",
-        "bc7e4916-39ec-4c0e-8f06-7a32eb005128"
+        "bc7e4916-39ec-4c0e-8f06-7a32eb005128",
+        "ce3148fa-06a3-4a80-8215-2be3f378dfce",
+        "508d4cf8-588e-4dd4-9dd7-f17d1bfe470b",
+        "0452a8ea-5b90-4110-9b84-ad3f20c3ab53"
       ],
       "settings": {
         "title": "<p>Conoce a <strong>nuestro equipo<\/strong><\/p>"
+      }
+    },
+    "cc4dfad1-0555-4ff9-9126-aa10d7f07419": {
+      "type": "collaborators",
+      "blocks": {
+        "b2e2317e-32b5-4676-8b58-88b8dcd1cfa7": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Bernardo_Contreras.jpg",
+            "name": "Bernardo Contreras",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "ceb0e1a1-f349-486a-ac86-19972b5fe9db": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Antonio_Vivas.jpg",
+            "name": "Antonio Vivas",
+            "role": "Ejecutivo de Ventas"
+          }
+        },
+        "ed73299e-88ff-4f11-9d37-85935d56f5b1": {
+          "type": "colaborador",
+          "settings": {
+            "avatar": "shopify:\/\/shop_images\/Joeni_Arteaga.png",
+            "name": "Joeni Arteaga",
+            "role": "Ejecutivo de Ventas"
+          }
+        }
+      },
+      "block_order": [
+        "b2e2317e-32b5-4676-8b58-88b8dcd1cfa7",
+        "ceb0e1a1-f349-486a-ac86-19972b5fe9db",
+        "ed73299e-88ff-4f11-9d37-85935d56f5b1"
+      ],
+      "settings": {
+        "title": "<p>Conoce al equipo de nuestra <strong>segunda sucursal<\/strong><\/p>"
       }
     }
   },
   "order": [
     "main",
     "4908541f-58ba-4da8-91c3-de5529cfcfdc",
-    "0d2200dd-0d2f-41e2-a38f-478512521981"
+    "0d2200dd-0d2f-41e2-a38f-478512521981",
+    "cc4dfad1-0555-4ff9-9126-aa10d7f07419"
   ]
 }

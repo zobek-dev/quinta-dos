@@ -9,12 +9,12 @@
       "settings": {
         "image_desktop": "shopify:\/\/shop_images\/1_489bb7d5-ee75-45f1-9b3e-81bac8eb5c9b.jpg",
         "image_mobile": "shopify:\/\/shop_images\/1_489bb7d5-ee75-45f1-9b3e-81bac8eb5c9b.jpg",
-        "title": "<p>Encuentra el <strong>repuesto que necesitas<\/strong> para tu vehículo<\/p>",
+        "title": "<p>Hasta <strong>25% OFF<\/strong> en repuestos de todas las marcas<\/p>",
         "content": "<p>Revisa nuestro stock o cotiza con nuestros vendedores<\/p>",
         "link_text": "Buscar Repuestos",
         "link": "shopify:\/\/collections\/en-bodega",
-        "green_link_text": "Contáctanos",
-        "green_link": "https:\/\/wa.me\/56986622371?text=Hola%2C%20deseo%20cotizar%20lo%20siguiente"
+        "green_link_text": "",
+        "green_link": ""
       }
     },
     "4246609f-cc90-41df-ad82-b886d52fc651": {
