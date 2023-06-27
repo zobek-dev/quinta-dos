@@ -9,7 +9,7 @@
       "settings": {
         "image_desktop": "shopify:\/\/shop_images\/1_489bb7d5-ee75-45f1-9b3e-81bac8eb5c9b.jpg",
         "image_mobile": "shopify:\/\/shop_images\/1_489bb7d5-ee75-45f1-9b3e-81bac8eb5c9b.jpg",
-        "title": "<p>Hasta <strong>25% OFF<\/strong> en repuestos de todas las marcas<\/p>",
+        "title": "<p>Encuentra el <strong>repuesto que necesitas <\/strong>para tu vehículo<\/p>",
         "content": "<p>Revisa nuestro stock o cotiza con nuestros vendedores<\/p>",
         "link_text": "Buscar Repuestos",
         "link": "shopify:\/\/collections\/en-bodega",
@@ -176,7 +176,7 @@
           "type": "review",
           "settings": {
             "author": "Ricky Aranda",
-            "content": "<p>Excelente atención. Llegué asustadp ṕorque hay mucho estafador dando vueltas pero acá son 100% confiables y mi experiencia fue muy buena en todo sentido.<\/p>"
+            "content": "<p>Excelente atención. Llegué asustado porque hay mucho estafador dando vueltas pero acá son 100% confiables y mi experiencia fue muy buena en todo sentido.<\/p>"
           }
         },
         "0f93a227-dfa4-4155-a649-e8fdbd9af1f1": {

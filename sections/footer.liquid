@@ -29,12 +29,12 @@
             {% assign menu_dos = linklists[block.settings.menu_dos] %}
             <div>
               {% comment %} {% liquid
-                echo menu_dos.handle
+              echo menu_dos.handle
               %} {% endcomment %}
               <h2 class="text-[18px] font-bold uppercase mb-2">{{ menu_dos.title | escape }}</h2>
               <ul>
                 {% for link in menu_dos.links %}
-                  <li>
+                  <li class="mb-2">
                     <a
                       href="{{ link.url }}"
                       class="block leading-[1.5] hover:underline hover:underline-offset-2"
@@ -50,13 +50,14 @@
           <li>
             <div class="mb-4">
               {% assign locations = linklists[block.settings.menu_uno] %}
-              <h3 class="text-[18px] font-bold uppercase mb-2">{{ locations.title | escape }}</h2>
+              <h3 class="text-[18px] font-bold uppercase mb-2 leading-[1.2]">{{ locations.title | escape }}</h2>
               <ul>
                 {% for link in locations.links %}
-                  <li>
+                  <li class="mb-2">
+                    <h3 class="text-[#FF4100] leading-[1.4] font-medium">Sucursal {{ forloop.index }}</h3>
                     <a
                       href="{{ link.url }}"
-                      class="block leading-[2] hover:underline hover:underline-offset-2 uppercase"
+                      class="block leading-[1.4] hover:underline hover:underline-offset-2"
                       target="_blank">
                       {{ link.title | escape }}
                     </a>
@@ -67,15 +68,18 @@
             <div>
               {% assign numbers = linklists[block.settings.menu_dos] %}
               <h3 class="text-[18px] font-bold uppercase mb-2">{{ numbers.title | escape }}</h2>
-              {% if numbers.handle == 'contactanos' %}
-                <h4 class="text-base mb-2">Escribenos o llamanos a:</h4>
-              {% endif %}
               <ul>
                 {% for link in numbers.links %}
                   <li class="mb-2">
+                    {% if forloop.first %}
+                      <p class="leading-[1.2]">Escribenos al</p>
+                    {% endif %}
+                    {% if forloop.index == 2 %}
+                      <p class="leading-[1.2]">O llamanos al</p>
+                    {% endif %}
                     <a
                       href="{{ link.url }}"
-                      class="btn-rounded btn-secondary"
+                      class="underline underline-offset-2 text-[#00C13E]"
                       target="_blank">
                       {{ link.title | escape }}
                     </a>
@@ -91,14 +95,13 @@
               {% if block.settings.pay_title_one != blank and block.settings.pay_image_one != blank %}
                 <li class="mb-1">
                   <img
-                  src="{{ block.settings.pay_image_one | img_url: '150' }}"
-                  alt="{{ block.settings.pay_title_one }}"
-                  width="150"
-                  height="{{ 150 | divided_by: settings.pay_image_one.aspect_ratio | ceil }}"
-                  loading="lazy"
-                  >
-                </li> 
-              {%  elsif block.settings.pay_title_one != blank and block.settings.pay_image_one == blank %}
+                    src="{{ block.settings.pay_image_one | img_url: '150' }}"
+                    alt="{{ block.settings.pay_title_one }}"
+                    width="150"
+                    height="{{ 150 | divided_by: settings.pay_image_one.aspect_ratio | ceil }}"
+                    loading="lazy">
+                </li>
+              {% elsif block.settings.pay_title_one != blank and block.settings.pay_image_one == blank %}
                 <li class="mb-1">
                   {{ block.settings.pay_title_one | escape }}
                 </li>
@@ -106,14 +109,13 @@
               {% if block.settings.pay_title_two != blank and block.settings.pay_image_two != blank %}
                 <li class="mb-1">
                   <img
-                  src="{{ block.settings.pay_image_two | img_url: '150' }}"
-                  alt="{{ block.settings.pay_title_two }}"
-                  width="150"
-                  height="{{ 150 | divided_by: settings.pay_image_two.aspect_ratio | ceil }}"
-                  loading="lazy"
-                  >
-                </li> 
-              {%  elsif block.settings.pay_title_two != blank and block.settings.pay_image_two == blank %}
+                    src="{{ block.settings.pay_image_two | img_url: '150' }}"
+                    alt="{{ block.settings.pay_title_two }}"
+                    width="150"
+                    height="{{ 150 | divided_by: settings.pay_image_two.aspect_ratio | ceil }}"
+                    loading="lazy">
+                </li>
+              {% elsif block.settings.pay_title_two != blank and block.settings.pay_image_two == blank %}
                 <li class="mb-1">
                   {{ block.settings.pay_title_two | escape }}
                 </li>
@@ -121,14 +123,13 @@
               {% if block.settings.pay_title_three != blank and block.settings.pay_image_three != blank %}
                 <li class="mb-1">
                   <img
-                  src="{{ block.settings.pay_image_three | img_url: '150' }}"
-                  alt="{{ block.settings.pay_title_three }}"
-                  width="150"
-                  height="{{ 150 | divided_by: settings.pay_image_three.aspect_ratio | ceil }}"
-                  loading="lazy"
-                  >
-                </li> 
-              {%  elsif block.settings.pay_title_three != blank and block.settings.pay_image_three == blank %}
+                    src="{{ block.settings.pay_image_three | img_url: '150' }}"
+                    alt="{{ block.settings.pay_title_three }}"
+                    width="150"
+                    height="{{ 150 | divided_by: settings.pay_image_three.aspect_ratio | ceil }}"
+                    loading="lazy">
+                </li>
+              {% elsif block.settings.pay_title_three != blank and block.settings.pay_image_three == blank %}
                 <li class="mb-1">
                   {{ block.settings.pay_title_three | escape }}
                 </li>
@@ -139,7 +140,19 @@
       {% endfor %}
     </ul>
     <div class="mt-8 lg:mt-12 text-center">
-      <span class="text-[8px] sm:text-xs leading-[1.1]">&copy; Quínta Desarmaduría {{ 'now' | date: '%Y' }}, diseñado y desarrollado por <a href="https://vanilla.cl" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">Vanilla</a> y <a href="https://mediahuella.com" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">Mediahuella</a></span>
+      <span class="text-[8px] sm:text-xs leading-[1.1]">&copy; Quínta Desarmaduría {{ 'now' | date: '%Y' }}, diseñado y desarrollado por
+        <a
+          href="https://vanilla.cl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline underline-offset-2">Vanilla</a>
+        y
+        <a
+          href="https://mediahuella.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline underline-offset-2">Mediahuella</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -148,8 +161,7 @@
   {
     "name": "Footer",
     "max_blocks": 5,
-    "settings": [
-    ],
+    "settings": [],
     "blocks": [
       {
         "type": "contact",
@@ -209,8 +221,7 @@
             "type": "text",
             "id": "pay_title_two",
             "label": "Método de pago dos"
-          },
-          {
+          }, {
             "type": "image_picker",
             "id": "pay_image_two",
             "label": "Imagen de método de pago dos"
