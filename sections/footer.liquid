@@ -27,7 +27,7 @@
               </ul>
             </div>
             {% assign menu_dos = linklists[block.settings.menu_dos] %}
-            <div>
+              <div>
               {% comment %} {% liquid
               echo menu_dos.handle
               %} {% endcomment %}
@@ -156,6 +156,7 @@
     </div>
   </div>
 </footer>
+{% render 'whatsapp-bubble' %}
 
 {% schema %}
   {
