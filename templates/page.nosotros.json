@@ -72,6 +72,7 @@
         },
         "31237ef7-c322-4a0f-9905-1f4c229e341f": {
           "type": "colaborador",
+          "disabled": true,
           "settings": {
             "avatar": "shopify:\/\/shop_images\/Stephanie.jpg",
             "name": "Stephanie Rincon",
@@ -80,6 +81,7 @@
         },
         "bc7e4916-39ec-4c0e-8f06-7a32eb005128": {
           "type": "colaborador",
+          "disabled": true,
           "settings": {
             "avatar": "shopify:\/\/shop_images\/Jose_Crespo.jpg",
             "name": "Jose Crespo",

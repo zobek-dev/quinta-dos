@@ -72,11 +72,11 @@
                 {% for link in numbers.links %}
                   <li class="mb-2">
                     {% if forloop.first %}
-                      <p class="leading-[1.2]">Escribenos al</p>
+                      <p class="leading-[1.2]">Llámanos al</p>
                     {% endif %}
-                    {% if forloop.index == 2 %}
+                    {% comment %} {% if forloop.index == 2 %}
                       <p class="leading-[1.2]">O llamanos al</p>
-                    {% endif %}
+                    {% endif %} {% endcomment %}
                     <a
                       href="{{ link.url }}"
                       class="underline underline-offset-2 text-[#00C13E]"

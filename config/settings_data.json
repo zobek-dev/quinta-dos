@@ -125,7 +125,9 @@
         "type": "announcement-bar",
         "settings": {
           "link": "",
-          "text": "Repuestos y accesorios de vehículos todas las marcas"
+          "text": "Repuestos y accesorios de vehículos todas las marcas",
+          "phone_text": "Llámanos al +569 8662 2371",
+          "phone_link": "tel:+56986622371"
         }
       },
       "header": {
